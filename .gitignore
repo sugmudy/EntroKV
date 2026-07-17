@@ -169,3 +169,17 @@ experiments/LongBench/*pred
 experiments/LongBench/runall_*.sh
 .vscode
 .idea
+
+# Local backups
+*.before_*
+*.before-*
+*.bak
+
+# Local validation logs
+/logs/
+
+# Local models, datasets and caches
+/models/
+/datasets/
+/huggingface/
+/.autodl/

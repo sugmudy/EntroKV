@@ -621,63 +621,180 @@ class AdaptiveSnapKVCluster():
 
 def init_snapkv(self):
 
-    assert hasattr(self.config, 'window_size'), "window_size not set"
-    assert hasattr(self.config, 'kernel_size'), "kernel_size not set"
+    assert hasattr(self.config, "window_size"), "window_size not set"
+    assert hasattr(self.config, "kernel_size"), "kernel_size not set"
     assert hasattr(self.config, "pooling"), "pooling not set"
     assert hasattr(self.config, "base_capacity"), "base_capacity not set"
-    # init only once
+
     if not hasattr(self, "kv_cluster"):
-        self.kv_cluster = SnapKVCluster(
-            window_size = self.config.window_size, 
-            max_capacity_prompt = self.config.base_capacity,
-            kernel_size = self.config.kernel_size,
-            pooling = self.config.pooling,
-            layer_idx = self.layer_idx,
-            num_hidden_layers = self.config.num_hidden_layers,
-            pyram_mode = self.config.pyram_mode,
-            pyram_beta = self.config.pyram_beta,
-            gqa_support = self.config.gqa_support,
-            num_key_value_groups = self.config.num_attention_heads // self.config.num_key_value_heads,
-            gqa_func = self.config.gqa_func
+        capacity_mode = getattr(
+            self.config,
+            "capacity_mode",
+            "absolute",
+        )
+
+        cluster_kwargs = dict(
+            window_size=self.config.window_size,
+            max_capacity_prompt=self.config.base_capacity,
+            kernel_size=self.config.kernel_size,
+            pooling=self.config.pooling,
+            layer_idx=self.layer_idx,
+            num_hidden_layers=self.config.num_hidden_layers,
+            pyram_mode=self.config.pyram_mode,
+            pyram_beta=self.config.pyram_beta,
+            gqa_support=self.config.gqa_support,
+            num_key_value_groups=(
+                self.config.num_attention_heads
+                // self.config.num_key_value_heads
+            ),
+            gqa_func=self.config.gqa_func,
+        )
+
+        if capacity_mode == "ratio":
+            from adaptive_snapkv.monkeypatch.ratio_snapkv_cluster import (
+                RatioSnapKVCluster,
             )
+
+            self.kv_cluster = RatioSnapKVCluster(
+                **cluster_kwargs,
+                retention_ratio=self.config.retention_ratio,
+            )
+        elif capacity_mode == "absolute":
+            self.kv_cluster = SnapKVCluster(
+                **cluster_kwargs
+            )
+        else:
+            raise ValueError(
+                f"Unsupported capacity_mode={capacity_mode!r}"
+            )
+
         if self.config.gqa_support:
             if self.config.model_type != "mistral":
-                warnings.warn("GQA currently supports only for mistral-7B-v0.2 model")
-        # if len(self.config.skip) > 0:
-        #     warnings.warn("vanilla transformer should not enable skip",self.config.skip)
-        print(f"Compress config(Snap): window_size={self.kv_cluster.window_size}, max_capacity_prompt={self.kv_cluster.max_capacity_prompt}, kernel_size={self.kv_cluster.kernel_size}, pooling={self.kv_cluster.pooling}, pyram_mode={self.kv_cluster.pyram_mode}, beta={self.kv_cluster.pyram_beta}",  flush=True)
+                warnings.warn(
+                    "GQA currently supports only for "
+                    "mistral-7B-v0.2 model"
+                )
+
+        print(
+            f"Compress config(Snap-{capacity_mode}): "
+            f"window_size={self.kv_cluster.window_size}, "
+            f"configured_capacity="
+            f"{self.kv_cluster.max_capacity_prompt}, "
+            f"retention_ratio="
+            f"{getattr(self.kv_cluster, 'retention_ratio', None)}, "
+            f"kernel_size={self.kv_cluster.kernel_size}, "
+            f"pooling={self.kv_cluster.pooling}",
+            flush=True,
+        )
+
 
 def init_adaptive_snapkv(self):
-    assert hasattr(self.config,'window_size'),"window_size not set"
-    assert hasattr(self.config,'kernel_size'),"kernel_size not set"
-    assert hasattr(self.config,"pooling"),"pooling not set"
+    assert hasattr(self.config, "window_size"), "window_size not set"
+    assert hasattr(self.config, "kernel_size"), "kernel_size not set"
+    assert hasattr(self.config, "pooling"), "pooling not set"
     assert hasattr(self.config, "base_capacity"), "base_capacity not set"
-    assert hasattr(self.config,"floor_alpha"),"floor_alpha not set"
+    assert hasattr(self.config, "floor_alpha"), "floor_alpha not set"
     assert self.config.floor_alpha is not None
 
-
-    # init only once
     if not hasattr(self, "kv_cluster"):
-        self.kv_cluster = AdaptiveSnapKVCluster(
-            window_size = self.config.window_size,
+        budget_mode = getattr(
+            self.config,
+            "budget_mode",
+            "adakv",
+        )
+
+        common_kwargs = dict(
+            window_size=self.config.window_size,
             base_capacity=self.config.base_capacity,
-            kernel_size = self.config.kernel_size,
-            pooling = self.config.pooling,
-            floor_alpha= self.config.floor_alpha,
-            skip = self.config.skip,
-            layer_idx = self.layer_idx,
-            normalize = self.config.normalize,
-            num_hidden_layers = self.config.num_hidden_layers,
-            pyram_mode = self.config.pyram_mode,
-            pyram_beta = self.config.pyram_beta,
-            gqa_support = self.config.gqa_support,
-            num_key_value_groups = self.config.num_attention_heads // self.config.num_key_value_heads,
-            gqa_func = self.config.gqa_func
+            kernel_size=self.config.kernel_size,
+            pooling=self.config.pooling,
+            floor_alpha=self.config.floor_alpha,
+            skip=self.config.skip,
+            layer_idx=self.layer_idx,
+            normalize=self.config.normalize,
+            num_hidden_layers=self.config.num_hidden_layers,
+            pyram_mode=self.config.pyram_mode,
+            pyram_beta=self.config.pyram_beta,
+            gqa_support=self.config.gqa_support,
+            num_key_value_groups=(
+                self.config.num_attention_heads
+                // self.config.num_key_value_heads
+            ),
+            gqa_func=self.config.gqa_func,
+        )
+
+        if budget_mode == "entrokv":
+            # Local import avoids a module-level circular import:
+            # entrokv_cluster imports AdaptiveSnapKVCluster
+            # from this file.
+            from adaptive_snapkv.monkeypatch.entrokv_cluster import (
+                EntroKVCluster,
             )
+
+            cluster_cls = EntroKVCluster
+
+            common_kwargs.update(
+                entrokv_alpha=getattr(
+                    self.config,
+                    "entrokv_alpha",
+                    0.5,
+                ),
+                entrokv_h_bar=getattr(
+                    self.config,
+                    "entrokv_h_bar",
+                    0.3,
+                ),
+                entrokv_debug=getattr(
+                    self.config,
+                    "entrokv_debug",
+                    False,
+                ),
+                entrokv_scope=getattr(
+                    self.config,
+                    "entrokv_scope",
+                    "per_layer",
+                ),
+                capacity_mode=getattr(
+                    self.config,
+                    "capacity_mode",
+                    "absolute",
+                ),
+                retention_ratio=getattr(
+                    self.config,
+                    "retention_ratio",
+                    None,
+                ),
+            )
+
+        elif budget_mode == "adakv":
+            cluster_cls = AdaptiveSnapKVCluster
+
+        else:
+            raise ValueError(
+                f"Unsupported budget_mode={budget_mode!r}"
+            )
+
+        self.kv_cluster = cluster_cls(**common_kwargs)
+
         if self.config.gqa_support:
             if self.config.model_type != "mistral":
-                warnings.warn("GQA currently supports only for mistral-7B-v0.2 model")
-        print(f"Compress config(Ada): window_size={self.kv_cluster.window_size}, base_capacity={self.kv_cluster.base_capacity}, kernel_size={self.kv_cluster.kernel_size}, pooling={self.kv_cluster.pooling}, floor_alpha={self.kv_cluster.floor_ratio}, pyram_mode={self.kv_cluster.pyram_mode}, beta={self.kv_cluster.pyram_beta}", flush=True)
+                warnings.warn(
+                    "GQA currently supports only for "
+                    "mistral-7B-v0.2 model"
+                )
+
+        print(
+            f"Compress config({budget_mode}): "
+            f"window_size={self.kv_cluster.window_size}, "
+            f"base_capacity={self.kv_cluster.base_capacity}, "
+            f"kernel_size={self.kv_cluster.kernel_size}, "
+            f"pooling={self.kv_cluster.pooling}, "
+            f"floor_alpha={self.kv_cluster.floor_ratio}, "
+            f"pyram_mode={self.kv_cluster.pyram_mode}, "
+            f"alpha={getattr(self.kv_cluster, 'entrokv_alpha', None)}, "
+            f"h_bar={getattr(self.kv_cluster, 'entrokv_h_bar', None)}",
+            flush=True,
+        )
 
 
 

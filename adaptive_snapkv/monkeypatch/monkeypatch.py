@@ -31,7 +31,26 @@ def check_version():
 
 
 # config hyperparameters
-def config_compress(model, window_size=32, base_capacity=1024, kernel_size=7, pooling="maxpool", floor_alpha=0.5, pyram_mode = False, beta = 20, skip=0, gqa_support=False,gqa_func="mean"):
+def config_compress(
+    model,
+    window_size=32,
+    base_capacity=1024,
+    kernel_size=7,
+    pooling="maxpool",
+    floor_alpha=0.5,
+    pyram_mode=False,
+    beta=20,
+    skip=0,
+    gqa_support=False,
+    gqa_func="mean",
+    budget_mode="adakv",
+    entrokv_alpha=0.5,
+    entrokv_h_bar=0.3,
+    entrokv_debug=False,
+    entrokv_scope="per_layer",
+    capacity_mode="absolute",
+    retention_ratio=None,
+):
     model.model.config.window_size = window_size
     model.model.config.base_capacity = base_capacity
     model.model.config.kernel_size = kernel_size
@@ -46,6 +65,41 @@ def config_compress(model, window_size=32, base_capacity=1024, kernel_size=7, po
 
     model.model.config.gqa_support = gqa_support
     model.model.config.gqa_func = gqa_func
+
+    if budget_mode not in {"adakv", "entrokv"}:
+        raise ValueError(
+            f"budget_mode must be 'adakv' or 'entrokv', "
+            f"got {budget_mode!r}"
+        )
+
+    model.model.config.budget_mode = budget_mode
+    model.model.config.entrokv_alpha = entrokv_alpha
+    model.model.config.entrokv_h_bar = entrokv_h_bar
+    model.model.config.entrokv_debug = entrokv_debug
+
+    if entrokv_scope not in {"per_layer", "global"}:
+        raise ValueError(
+            f"Unsupported entrokv_scope={entrokv_scope!r}"
+        )
+
+    if capacity_mode not in {"absolute", "ratio"}:
+        raise ValueError(
+            f"Unsupported capacity_mode={capacity_mode!r}"
+        )
+
+    if capacity_mode == "ratio":
+        if retention_ratio is None:
+            raise ValueError(
+                "ratio mode requires retention_ratio"
+            )
+        if not 0.0 < retention_ratio <= 1.0:
+            raise ValueError(
+                "retention_ratio must be in (0,1]"
+            )
+
+    model.model.config.entrokv_scope = entrokv_scope
+    model.model.config.capacity_mode = capacity_mode
+    model.model.config.retention_ratio = retention_ratio
 
     return model
 

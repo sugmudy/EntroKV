@@ -1,0 +1,660 @@
+from __future__ import annotations
+
+import math
+from typing import List, Tuple
+
+import torch
+import torch.nn.functional as F
+
+from adaptive_snapkv.monkeypatch.entrokv_utils import (
+    allocate_entrokv_budgets,
+    compute_window_entropy,
+)
+from adaptive_snapkv.monkeypatch.snapkv_utils import (
+    AdaptiveSnapKVCluster,
+    repeat_kv,
+)
+
+
+class EntroKVCluster(AdaptiveSnapKVCluster):
+    """
+    EntroKV + SnapKV 的 GQA 实现。
+
+    保留 AdaptiveSnapKVCluster 的：
+      1. flattened KV cache 格式；
+      2. head_lens / cu_klen 元数据；
+      3. decode 阶段 varlen FlashAttention；
+      4. SnapKV pooling、token ranking 和 gather。
+
+    仅替换：
+      AdaKV head_adaptive_capacity
+          ->
+      EntroKV entropy-guided head quota。
+    """
+
+    def __init__(
+        self,
+        *args,
+        entrokv_alpha: float = 0.5,
+        entrokv_h_bar: float = 0.3,
+        entrokv_debug: bool = False,
+        **kwargs,
+    ) -> None:
+        super().__init__(*args, **kwargs)
+
+        if not self.gqa_support:
+            raise ValueError(
+                "当前阶段 3B 的 EntroKVCluster 只实现 GQA 路径"
+            )
+
+        if self.pyram_mode:
+            raise ValueError(
+                "当前 EntroKV 验证要求 pyram_mode=False，"
+                "避免同时引入 PyramidKV 的 layer-wise capacity"
+            )
+
+        if not 0.0 <= entrokv_alpha <= 1.0:
+            raise ValueError(
+                f"entrokv_alpha 必须在 [0,1]，实际为 "
+                f"{entrokv_alpha}"
+            )
+
+        if not 0.0 <= entrokv_h_bar <= 1.0:
+            raise ValueError(
+                f"entrokv_h_bar 必须在 [0,1]，实际为 "
+                f"{entrokv_h_bar}"
+            )
+
+        self.entrokv_alpha = float(entrokv_alpha)
+        self.entrokv_h_bar = float(entrokv_h_bar)
+        self.entrokv_debug = bool(entrokv_debug)
+        self.budget_mode = "entrokv"
+
+        # 以下字段由 prefill 写入，供验证和实验日志使用。
+        self.last_query_entropy = None
+        self.last_kv_entropy = None
+        self.last_raw_budgets = None
+        self.last_history_budgets = None
+        self.last_prefill_head_lens = None
+        self.last_prefill_q_len = None
+
+    def _init_gqa_metadata(
+        self,
+        num_query_heads: int,
+        k_lens: List[int],
+        device: torch.device,
+    ) -> None:
+        """
+        初始化 flattened KV cache 的 varlen FlashAttention 元数据。
+        """
+
+        num_kv_heads = (
+            num_query_heads // self.num_key_value_groups
+        )
+
+        if len(k_lens) != num_kv_heads:
+            raise AssertionError(
+                f"k_lens 应有 {num_kv_heads} 项，"
+                f"实际为 {len(k_lens)}"
+            )
+
+        self.head_lens = torch.tensor(
+            k_lens,
+            dtype=torch.int32,
+            device=device,
+        )
+
+        self.klen_sum = int(self.head_lens.sum().item())
+        self.max_seqlen_k = int(self.head_lens.max().item())
+
+        # 例如：
+        # head_lens = [10, 20, 15]
+        # cu_klen   = [0, 10, 30, 45]
+        cumulative = torch.cumsum(
+            self.head_lens,
+            dim=0,
+            dtype=torch.int32,
+        )
+
+        self.cu_klen = torch.cat(
+            [
+                torch.zeros(
+                    1,
+                    dtype=torch.int32,
+                    device=device,
+                ),
+                cumulative,
+            ],
+            dim=0,
+        )
+
+        # GQA decode 中共有 num_kv_heads 条独立 KV 序列。
+        # 每条序列对应一个 KV head，并承载
+        # num_key_value_groups 个 query heads。
+        self.layer_qlens = torch.ones(
+            num_kv_heads,
+            dtype=torch.int32,
+            device=device,
+        )
+
+        self.qlen_sum = num_kv_heads
+
+        self.cu_qlen = torch.arange(
+            0,
+            num_kv_heads + 1,
+            dtype=torch.int32,
+            device=device,
+        )
+
+        # 每次 decode 时，每一个物理 KV head 增加一个 token。
+        self.cu_offset = torch.arange(
+            0,
+            num_kv_heads + 1,
+            dtype=torch.int32,
+            device=device,
+        )
+
+        self.cu_head_offset = torch.arange(
+            1,
+            num_kv_heads + 1,
+            dtype=torch.int32,
+            device=device,
+        )
+
+        self.cu_headlens = cumulative
+
+    def _compute_attention_products(
+        self,
+        repeated_key_states: torch.Tensor,
+        query_states: torch.Tensor,
+    ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+        """
+        一次 QK 计算同时得到：
+
+          1. SnapKV token importance score；
+          2. 32 个 query-head entropy；
+          3. 8 个 KV-head entropy。
+
+        不重复执行额外的 QK matmul。
+        """
+
+        batch_size, num_query_heads, q_len, head_dim = (
+            query_states.shape
+        )
+
+        window_size = int(self.window_size)
+
+        if q_len <= window_size:
+            raise ValueError(
+                f"q_len={q_len} 必须大于 "
+                f"window_size={window_size}"
+            )
+
+        if repeated_key_states.shape[:3] != (
+            batch_size,
+            num_query_heads,
+            q_len,
+        ):
+            raise AssertionError(
+                "repeat_kv 后的 K shape 与 Q 不匹配："
+                f"K={tuple(repeated_key_states.shape)}, "
+                f"Q={tuple(query_states.shape)}"
+            )
+
+        # ----------------------------------------------------
+        # 1. 与原 SnapKV 相同的 observation-window QK
+        # ----------------------------------------------------
+
+        attention_logits = torch.matmul(
+            query_states[..., -window_size:, :],
+            repeated_key_states.transpose(2, 3),
+        ) / math.sqrt(head_dim)
+
+        # 最近 window 内部仍需要 causal mask。
+        causal_mask = torch.full(
+            (window_size, window_size),
+            torch.finfo(attention_logits.dtype).min,
+            dtype=attention_logits.dtype,
+            device=attention_logits.device,
+        )
+
+        position = torch.arange(
+            window_size,
+            device=attention_logits.device,
+        )
+
+        causal_mask.masked_fill_(
+            position < (position + 1).view(window_size, 1),
+            0,
+        )
+
+        attention_logits[
+            :,
+            :,
+            -window_size:,
+            -window_size:,
+        ] += causal_mask[None, None, :, :]
+
+        attention_weights = F.softmax(
+            attention_logits,
+            dim=-1,
+            dtype=torch.float32,
+        ).to(query_states.dtype)
+
+        historical_length = q_len - window_size
+
+        # ----------------------------------------------------
+        # 2. 计算 EntroKV entropy
+        # ----------------------------------------------------
+
+        query_entropy, kv_entropy = compute_window_entropy(
+            attn_weights=attention_weights,
+            window_size=window_size,
+            num_key_value_groups=self.num_key_value_groups,
+            gqa_func=self.gqa_func,
+        )
+
+        # ----------------------------------------------------
+        # 3. 与原 SnapKV 相同的 token importance
+        # ----------------------------------------------------
+
+        # 对最近 w 个 query 求平均：
+        #
+        # [B, 32, W, history]
+        #       ->
+        # [B, 32, history]
+        token_score = attention_weights[
+            ...,
+            :historical_length,
+        ].mean(dim=-2)
+
+        num_kv_heads = (
+            num_query_heads // self.num_key_value_groups
+        )
+
+        # 32 query heads -> [8 KV heads, 4 shared Q heads]
+        token_score = token_score.view(
+            batch_size,
+            num_kv_heads,
+            self.num_key_value_groups,
+            historical_length,
+        )
+
+        if self.gqa_func == "mean":
+            token_score = token_score.mean(dim=2)
+        elif self.gqa_func == "max":
+            token_score = token_score.max(dim=2).values
+        else:
+            raise ValueError(
+                f"不支持的 gqa_func={self.gqa_func!r}"
+            )
+
+        if self.pooling == "avgpool":
+            token_score = F.avg_pool1d(
+                token_score,
+                kernel_size=self.kernel_size,
+                padding=self.kernel_size // 2,
+                stride=1,
+            )
+        elif self.pooling == "maxpool":
+            token_score = F.max_pool1d(
+                token_score,
+                kernel_size=self.kernel_size,
+                padding=self.kernel_size // 2,
+                stride=1,
+            )
+        else:
+            raise ValueError(
+                f"不支持的 pooling={self.pooling!r}"
+            )
+
+        return token_score, query_entropy, kv_entropy
+
+    def update_kv_gqa(
+        self,
+        origin_key_states: torch.Tensor,
+        query_states: torch.Tensor,
+        origin_value_states: torch.Tensor,
+    ) -> Tuple[torch.Tensor, torch.Tensor]:
+        """
+        EntroKV prefill compression 的主入口。
+        """
+
+        # 原始物理 KV：
+        # [B, 8, L, D]
+        #
+        # 为计算 32 个 query heads 的 attention，先 repeat：
+        # [B, 32, L, D]
+        repeated_key_states = repeat_kv(
+            origin_key_states,
+            self.num_key_value_groups,
+        )
+
+        batch_size, num_query_heads, q_len, head_dim = (
+            query_states.shape
+        )
+
+        _, num_kv_heads, kv_len, kv_head_dim = (
+            origin_key_states.shape
+        )
+
+        expected_kv_heads = (
+            num_query_heads // self.num_key_value_groups
+        )
+
+        if batch_size != 1:
+            raise AssertionError(
+                "AdaKV flattened cache 当前只支持 batch_size=1"
+            )
+
+        if q_len != kv_len:
+            raise AssertionError(
+                f"Q/K 长度不一致：Q={q_len}, K={kv_len}"
+            )
+
+        if head_dim != kv_head_dim:
+            raise AssertionError(
+                "Q/K head_dim 不一致"
+            )
+
+        if num_kv_heads != expected_kv_heads:
+            raise AssertionError(
+                f"物理 KV heads={num_kv_heads}，"
+                f"但由 GQA 推导得到 {expected_kv_heads}"
+            )
+
+        token_score, query_entropy, kv_entropy = (
+            self._compute_attention_products(
+                repeated_key_states,
+                query_states,
+            )
+        )
+
+        historical_length = token_score.shape[-1]
+
+        # 当历史候选长度不足 base capacity 时，不做压缩。
+        if self.base_capacity > historical_length:
+            full_lengths = [q_len] * num_kv_heads
+
+            self._init_gqa_metadata(
+                num_query_heads=num_query_heads,
+                k_lens=full_lengths,
+                device=origin_key_states.device,
+            )
+
+            self.last_query_entropy = (
+                query_entropy.detach().cpu()
+            )
+            self.last_kv_entropy = kv_entropy.detach().cpu()
+            self.last_raw_budgets = None
+            self.last_history_budgets = None
+            self.last_prefill_head_lens = (
+                self.head_lens.detach().cpu().clone()
+            )
+            self.last_prefill_q_len = q_len
+
+            return (
+                origin_key_states.reshape(-1, head_dim),
+                origin_value_states.reshape(-1, head_dim),
+            )
+
+        # ----------------------------------------------------
+        # 1. EntroKV quota allocation
+        # ----------------------------------------------------
+
+        if self.layer_idx >= self.skip:
+            history_budgets, raw_budgets = (
+                allocate_entrokv_budgets(
+                    kv_entropy=kv_entropy,
+                    base_capacity=self.base_capacity,
+                    alpha=self.entrokv_alpha,
+                    h_bar=self.entrokv_h_bar,
+                    candidate_length=historical_length,
+                    min_capacity=1,
+                )
+            )
+        else:
+            # 保留 skip 的兼容语义：
+            # skip 之前的层使用均匀 quota。
+            history_budgets = torch.full(
+                (batch_size, num_kv_heads),
+                self.base_capacity,
+                dtype=torch.int32,
+                device=origin_key_states.device,
+            )
+
+            raw_budgets = history_budgets.float()
+
+        expected_history_total = (
+            num_kv_heads * self.base_capacity
+        )
+
+        actual_history_total = int(
+            history_budgets.sum().item()
+        )
+
+        if actual_history_total != expected_history_total:
+            raise AssertionError(
+                f"Layer {self.layer_idx} EntroKV 历史预算不守恒："
+                f"{actual_history_total} != "
+                f"{expected_history_total}"
+            )
+
+        # ----------------------------------------------------
+        # 2. SnapKV 原始 token ranking
+        # ----------------------------------------------------
+
+        _, sorted_token_indices = token_score.sort(
+            dim=-1,
+            descending=True,
+        )
+
+        sorted_token_indices_by_head = (
+            sorted_token_indices.split(1, dim=1)
+        )
+
+        origin_key_by_head = torch.split(
+            origin_key_states,
+            1,
+            dim=1,
+        )
+
+        origin_value_by_head = torch.split(
+            origin_value_states,
+            1,
+            dim=1,
+        )
+
+        flattened_keys = []
+        flattened_values = []
+        k_lens = []
+
+        # ----------------------------------------------------
+        # 3. 每个物理 KV head 使用自己的 EntroKV quota
+        # ----------------------------------------------------
+
+        for head_idx in range(num_kv_heads):
+            quota = int(
+                history_budgets[0, head_idx].item()
+            )
+
+            cache_index = sorted_token_indices_by_head[
+                head_idx
+            ][..., :quota]
+
+            cache_index = cache_index.view(
+                1,
+                1,
+                quota,
+                1,
+            ).expand(
+                -1,
+                -1,
+                -1,
+                head_dim,
+            )
+
+            selected_history_k = origin_key_by_head[
+                head_idx
+            ][
+                :,
+                :,
+                :-self.window_size,
+                :,
+            ].gather(
+                dim=2,
+                index=cache_index,
+            )
+
+            selected_history_v = origin_value_by_head[
+                head_idx
+            ][
+                :,
+                :,
+                :-self.window_size,
+                :,
+            ].gather(
+                dim=2,
+                index=cache_index,
+            )
+
+            recent_k = origin_key_by_head[head_idx][
+                :,
+                :,
+                -self.window_size:,
+                :,
+            ]
+
+            recent_v = origin_value_by_head[head_idx][
+                :,
+                :,
+                -self.window_size:,
+                :,
+            ]
+
+            selected_k = torch.cat(
+                [selected_history_k, recent_k],
+                dim=2,
+            )
+
+            selected_v = torch.cat(
+                [selected_history_v, recent_v],
+                dim=2,
+            )
+
+            head_length = quota + self.window_size
+            k_lens.append(head_length)
+
+            flattened_keys.append(
+                selected_k.reshape(-1, head_dim)
+            )
+
+            flattened_values.append(
+                selected_v.reshape(-1, head_dim)
+            )
+
+        # ----------------------------------------------------
+        # 4. 初始化 varlen FlashAttention metadata
+        # ----------------------------------------------------
+
+        self._init_gqa_metadata(
+            num_query_heads=num_query_heads,
+            k_lens=k_lens,
+            device=origin_key_states.device,
+        )
+
+        flattened_keys = torch.cat(
+            flattened_keys,
+            dim=0,
+        )
+
+        flattened_values = torch.cat(
+            flattened_values,
+            dim=0,
+        )
+
+        if flattened_keys.shape[0] != self.klen_sum:
+            raise AssertionError(
+                "flattened K 行数与 klen_sum 不一致："
+                f"{flattened_keys.shape[0]} != "
+                f"{self.klen_sum}"
+            )
+
+        if flattened_values.shape[0] != self.klen_sum:
+            raise AssertionError(
+                "flattened V 行数与 klen_sum 不一致："
+                f"{flattened_values.shape[0]} != "
+                f"{self.klen_sum}"
+            )
+
+        # 保存少量调试信息，不保存完整 attention matrix。
+        self.last_query_entropy = (
+            query_entropy.detach().cpu().clone()
+        )
+
+        self.last_kv_entropy = (
+            kv_entropy.detach().cpu().clone()
+        )
+
+        self.last_raw_budgets = (
+            raw_budgets.detach().cpu().clone()
+        )
+
+        self.last_history_budgets = (
+            history_budgets.detach().cpu().clone()
+        )
+
+        self.last_prefill_head_lens = (
+            self.head_lens.detach().cpu().clone()
+        )
+
+        self.last_prefill_q_len = q_len
+
+        if self.entrokv_debug:
+            entropy_list = self.last_kv_entropy[
+                0
+            ].tolist()
+
+            budget_list = self.last_history_budgets[
+                0
+            ].tolist()
+
+            head_lens_list = self.last_prefill_head_lens.tolist()
+
+            print(
+                f"[EntroKV] layer={self.layer_idx:02d}, "
+                f"q_len={q_len}, "
+                f"history={historical_length}",
+                flush=True,
+            )
+
+            print(
+                f"  KV entropy:      {entropy_list}",
+                flush=True,
+            )
+
+            print(
+                f"  history budgets: {budget_list}",
+                flush=True,
+            )
+
+            print(
+                f"  history total:   "
+                f"{sum(budget_list)} / "
+                f"{expected_history_total}",
+                flush=True,
+            )
+
+            print(
+                f"  prefill lengths: {head_lens_list}",
+                flush=True,
+            )
+
+            print(
+                f"  prefill total:   "
+                f"{sum(head_lens_list)} / "
+                f"{expected_history_total + num_kv_heads * self.window_size}",
+                flush=True,
+            )
+
+        return flattened_keys, flattened_values

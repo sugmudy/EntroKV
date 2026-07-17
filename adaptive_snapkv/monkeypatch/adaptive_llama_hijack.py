@@ -148,6 +148,34 @@ def adaptive_LlamaModel_forward(
     if output_hidden_states:
         all_hidden_states += (hidden_states,)
 
+    # EntroKV global scope:
+    # all layers have now produced entropy and full prefill KV.
+    # Perform one global layer-head allocation before converting
+    # the cache back to legacy format for generation.
+    if (
+        use_cache
+        and next_decoder_cache is not None
+        and inputs_embeds.shape[1] != 1
+        and getattr(
+            self.config,
+            "budget_mode",
+            "adakv",
+        ) == "entrokv"
+        and getattr(
+            self.config,
+            "entrokv_scope",
+            "per_layer",
+        ) == "global"
+    ):
+        from adaptive_snapkv.monkeypatch.entrokv_global import (
+            finalize_entrokv_global_cache,
+        )
+
+        finalize_entrokv_global_cache(
+            llama_model=self,
+            cache=next_decoder_cache,
+        )
+
     next_cache = next_decoder_cache if use_cache else None
     if return_legacy_cache:
         next_cache = next_cache.to_legacy_cache()
@@ -281,7 +309,7 @@ def adaptive_llama_flash_attn2_forward(
         key_states, value_states = past_key_value.update(key_states, value_states, self.layer_idx, cache_kwargs)
 
         # NOTE: update meta data
-        self.kv_cluster.klen_sum += self.num_heads
+        self.kv_cluster.klen_sum += (self.num_key_value_heads if self.kv_cluster.gqa_support else self.num_heads)
         self.kv_cluster.max_seqlen_k += 1
         self.kv_cluster.cu_klen += self.kv_cluster.cu_offset
         self.kv_cluster.head_lens += 1
