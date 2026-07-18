@@ -215,7 +215,8 @@ def main():
     heatmaps(data,out,a.dpi); differences(data,out,a.dpi); profiles(data,out,a.dpi); summary=tables(data,out)
     summary.update({'schema_version':1,'input_root':str(root),'run_name':a.run_name,'tasks':a.tasks,
       'normalization':'history_budgets / target_history_capacity_per_head'})
-    (out/'visualization_summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+    encoder=lambda x: x.item() if isinstance(x,np.generic) else x.tolist()
+    (out/'visualization_summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2,default=encoder),encoding='utf-8')
     analysis(data,summary,out,root,a.run_name)
     print('\nStage 4C dynamic-budget visualization')
     print('='*72)
