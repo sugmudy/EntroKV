@@ -1,0 +1,288 @@
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/monkeypatch.py:30: UserWarning: Transformers version 4.44.2 might not be compatible with SnapKV. SnapKV is tested with Transformers version ['4.37'].
+  warnings.warn(f"Transformers version {transformers_version} might not be compatible with SnapKV. SnapKV is tested with Transformers version {version_list}.")
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:04,  1.37s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.26s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:03<00:01,  1.20s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.18it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.00it/s]
+We detected that you are passing `past_key_values` as a tuple and this is deprecated and will be removed in v4.43. Please use an appropriate `Cache` class (https://huggingface.co/docs/transformers/v4.41.3/en/internal/generation_utils#transformers.Cache)
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/snapkv_utils.py:781: UserWarning: GQA currently supports only for mistral-7B-v0.2 model
+  warnings.warn(
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/snapkv_utils.py:781: UserWarning: GQA currently supports only for mistral-7B-v0.2 model
+  warnings.warn(
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV-global] layer=00, q_len=5265
+  KV entropy:      [0.7403972148895264, 0.8317352533340454, 0.8478676080703735, 0.8743607401847839, 0.7567741870880127, 0.8889542818069458, 0.7963345646858215, 0.394655704498291]
+  history budgets: [2967, 3227, 3273, 3349, 3013, 3390, 3126, 1981]
+  layer history total: 24326
+  prefill lengths: [2999, 3259, 3305, 3381, 3045, 3422, 3158, 2013]
+  layer prefill total: 24582
+[EntroKV-global] layer=01, q_len=5265
+  KV entropy:      [0.08648976683616638, 0.020238088443875313, 0.1882525086402893, 0.08128207921981812, 0.025154778733849525, 0.20907814800739288, 0.07214516401290894, 0.13542363047599792]
+  history budgets: [1102, 913, 1392, 1087, 927, 1452, 1061, 1242]
+  layer history total: 9176
+  prefill lengths: [1134, 945, 1424, 1119, 959, 1484, 1093, 1274]
+  layer prefill total: 9432
+[EntroKV-global] layer=02, q_len=5265
+  KV entropy:      [0.04527214542031288, 0.1278432160615921, 0.021464722231030464, 0.1616605818271637, 0.08407412469387054, 0.20248711109161377, 0.048710666596889496, 0.02079588919878006]
+  history budgets: [985, 1220, 917, 1316, 1095, 1433, 994, 915]
+  layer history total: 8875
+  prefill lengths: [1017, 1252, 949, 1348, 1127, 1465, 1026, 947]
+  layer prefill total: 9131
+[EntroKV-global] layer=03, q_len=5265
+  KV entropy:      [0.0881933644413948, 0.014169305562973022, 0.02931319922208786, 0.0959649384021759, 0.0285874605178833, 0.11291886121034622, 0.11270266771316528, 0.05694142356514931]
+  history budgets: [1107, 896, 939, 1129, 937, 1177, 1177, 1018]
+  layer history total: 8380
+  prefill lengths: [1139, 928, 971, 1161, 969, 1209, 1209, 1050]
+  layer prefill total: 8636
+[EntroKV-global] layer=04, q_len=5265
+  KV entropy:      [0.09414231777191162, 0.10305802524089813, 0.1483672559261322, 0.10131821036338806, 0.1687019020318985, 0.12451933324337006, 0.08372880518436432, 0.1342160701751709]
+  history budgets: [1124, 1149, 1278, 1144, 1336, 1210, 1094, 1238]
+  layer history total: 9573
+  prefill lengths: [1156, 1181, 1310, 1176, 1368, 1242, 1126, 1270]
+  layer prefill total: 9829
+[EntroKV-global] layer=05, q_len=5265
+  KV entropy:      [0.11709429323673248, 0.30481505393981934, 0.21633370220661163, 0.08697360754013062, 0.2835283875465393, 0.18438264727592468, 0.176681786775589, 0.09544830769300461]
+  history budgets: [1189, 1725, 1472, 1103, 1664, 1381, 1359, 1128]
+  layer history total: 11021
+  prefill lengths: [1221, 1757, 1504, 1135, 1696, 1413, 1391, 1160]
+  layer prefill total: 11277
+[EntroKV-global] layer=06, q_len=5265
+  KV entropy:      [0.20910777151584625, 0.20835918188095093, 0.14400193095207214, 0.20449736714363098, 0.1681576669216156, 0.3546815514564514, 0.3061061203479767, 0.18552790582180023]
+  history budgets: [1452, 1450, 1266, 1439, 1335, 1867, 1728, 1384]
+  layer history total: 11921
+  prefill lengths: [1484, 1482, 1298, 1471, 1367, 1899, 1760, 1416]
+  layer prefill total: 12177
+[EntroKV-global] layer=07, q_len=5265
+  KV entropy:      [0.1930701732635498, 0.3453117609024048, 0.32594871520996094, 0.23203334212303162, 0.27349814772605896, 0.3794959783554077, 0.3052906394004822, 0.23572301864624023]
+  history budgets: [1406, 1840, 1785, 1517, 1635, 1937, 1726, 1528]
+  layer history total: 13374
+  prefill lengths: [1438, 1872, 1817, 1549, 1667, 1969, 1758, 1560]
+  layer prefill total: 13630
+[EntroKV-global] layer=08, q_len=5265
+  KV entropy:      [0.29702460765838623, 0.17736214399337769, 0.44688880443573, 0.23748928308486938, 0.3464292287826538, 0.19098466634750366, 0.23429153859615326, 0.36149919033050537]
+  history budgets: [1702, 1361, 2130, 1533, 1843, 1400, 1523, 1886]
+  layer history total: 13378
+  prefill lengths: [1734, 1393, 2162, 1565, 1875, 1432, 1555, 1918]
+  layer prefill total: 13634
+[EntroKV-global] layer=09, q_len=5265
+  KV entropy:      [0.5072886943817139, 0.20277139544487, 0.20741435885429382, 0.4697730839252472, 0.40975522994995117, 0.3451061248779297, 0.2549125552177429, 0.4191109538078308]
+  history budgets: [2302, 1434, 1447, 2195, 2024, 1839, 1582, 2050]
+  layer history total: 14873
+  prefill lengths: [2334, 1466, 1479, 2227, 2056, 1871, 1614, 2082]
+  layer prefill total: 15129
+[EntroKV-global] layer=10, q_len=5265
+  KV entropy:      [0.3286215662956238, 0.2229725867509842, 0.2724434733390808, 0.272265762090683, 0.3917180299758911, 0.34545865654945374, 0.4025137424468994, 0.32069987058639526]
+  history budgets: [1792, 1491, 1632, 1632, 1972, 1840, 2003, 1770]
+  layer history total: 14132
+  prefill lengths: [1824, 1523, 1664, 1664, 2004, 1872, 2035, 1802]
+  layer prefill total: 14388
+[EntroKV-global] layer=11, q_len=5265
+  KV entropy:      [0.4308098554611206, 0.39872318506240845, 0.4396229386329651, 0.4432156980037689, 0.3036597669124603, 0.4840002655982971, 0.49582523107528687, 0.2259104698896408]
+  history budgets: [2084, 1992, 2109, 2119, 1721, 2235, 2269, 1500]
+  layer history total: 16029
+  prefill lengths: [2116, 2024, 2141, 2151, 1753, 2267, 2301, 1532]
+  layer prefill total: 16285
+[EntroKV-global] layer=12, q_len=5265
+  KV entropy:      [0.3611723482608795, 0.453300803899765, 0.4552720785140991, 0.30304861068725586, 0.1424543857574463, 0.36662840843200684, 0.3474384546279907, 0.3310837745666504]
+  history budgets: [1885, 2148, 2154, 1720, 1262, 1901, 1846, 1799]
+  layer history total: 14715
+  prefill lengths: [1917, 2180, 2186, 1752, 1294, 1933, 1878, 1831]
+  layer prefill total: 14971
+[EntroKV-global] layer=13, q_len=5265
+  KV entropy:      [0.4944131672382355, 0.3627268970012665, 0.4339957535266876, 0.4164505898952484, 0.5193421244621277, 0.30045032501220703, 0.34665730595588684, 0.45244547724723816]
+  history budgets: [2265, 1890, 2093, 2043, 2336, 1712, 1844, 2146]
+  layer history total: 16329
+  prefill lengths: [2297, 1922, 2125, 2075, 2368, 1744, 1876, 2178]
+  layer prefill total: 16585
+[EntroKV-global] layer=14, q_len=5265
+  KV entropy:      [0.3419647812843323, 0.43620800971984863, 0.1879512369632721, 0.4054037928581238, 0.3372318744659424, 0.43888169527053833, 0.2985493540763855, 0.42600464820861816]
+  history budgets: [1830, 2099, 1391, 2011, 1817, 2107, 1707, 2070]
+  layer history total: 15032
+  prefill lengths: [1862, 2131, 1423, 2043, 1849, 2139, 1739, 2102]
+  layer prefill total: 15288
+[EntroKV-global] layer=15, q_len=5265
+  KV entropy:      [0.19344282150268555, 0.3746323585510254, 0.4571228623390198, 0.21301661431789398, 0.3579804301261902, 0.35240834951400757, 0.3958318829536438, 0.2598111033439636]
+  history budgets: [1407, 1924, 2159, 1463, 1876, 1860, 1984, 1596]
+  layer history total: 14269
+  prefill lengths: [1439, 1956, 2191, 1495, 1908, 1892, 2016, 1628]
+  layer prefill total: 14525
+[EntroKV-global] layer=16, q_len=5265
+  KV entropy:      [0.3998194932937622, 0.2773648798465729, 0.17474567890167236, 0.22698749601840973, 0.41913077235221863, 0.15062405169010162, 0.32428479194641113, 0.2761639654636383]
+  history budgets: [1995, 1646, 1354, 1503, 2051, 1285, 1780, 1643]
+  layer history total: 13257
+  prefill lengths: [2027, 1678, 1386, 1535, 2083, 1317, 1812, 1675]
+  layer prefill total: 13513
+[EntroKV-global] layer=17, q_len=5265
+  KV entropy:      [0.22121906280517578, 0.29714953899383545, 0.3811410665512085, 0.3839663863182068, 0.15715008974075317, 0.27936118841171265, 0.38005271553993225, 0.237177774310112]
+  history budgets: [1486, 1703, 1942, 1950, 1304, 1652, 1939, 1532]
+  layer history total: 13508
+  prefill lengths: [1518, 1735, 1974, 1982, 1336, 1684, 1971, 1564]
+  layer prefill total: 13764
+[EntroKV-global] layer=18, q_len=5265
+  KV entropy:      [0.16199393570423126, 0.10064905136823654, 0.2367955446243286, 0.13950052857398987, 0.11012691259384155, 0.2905527949333191, 0.14676646888256073, 0.24484829604625702]
+  history budgets: [1317, 1142, 1531, 1253, 1169, 1684, 1274, 1554]
+  layer history total: 10924
+  prefill lengths: [1349, 1174, 1563, 1285, 1201, 1716, 1306, 1586]
+  layer prefill total: 11180
+[EntroKV-global] layer=19, q_len=5265
+  KV entropy:      [0.30310606956481934, 0.15142498910427094, 0.23676936328411102, 0.3645479381084442, 0.0976308137178421, 0.21786347031593323, 0.1015772819519043, 0.13277199864387512]
+  history budgets: [1720, 1287, 1531, 1895, 1134, 1477, 1145, 1234]
+  layer history total: 11423
+  prefill lengths: [1752, 1319, 1563, 1927, 1166, 1509, 1177, 1266]
+  layer prefill total: 11679
+[EntroKV-global] layer=20, q_len=5265
+  KV entropy:      [0.26356276869773865, 0.14838197827339172, 0.2373327761888504, 0.35064518451690674, 0.11947789043188095, 0.13073696196079254, 0.3000428378582001, 0.1104249507188797]
+  history budgets: [1607, 1279, 1532, 1855, 1196, 1228, 1711, 1170]
+  layer history total: 11578
+  prefill lengths: [1639, 1311, 1564, 1887, 1228, 1260, 1743, 1202]
+  layer prefill total: 11834
+[EntroKV-global] layer=21, q_len=5265
+  KV entropy:      [0.2936769425868988, 0.086734339594841, 0.20250573754310608, 0.18505126237869263, 0.0969899445772171, 0.16225631535053253, 0.1767333596944809, 0.05200958251953125]
+  history budgets: [1693, 1103, 1433, 1383, 1132, 1318, 1359, 1004]
+  layer history total: 10425
+  prefill lengths: [1725, 1135, 1465, 1415, 1164, 1350, 1391, 1036]
+  layer prefill total: 10681
+[EntroKV-global] layer=22, q_len=5265
+  KV entropy:      [0.08299767225980759, 0.20561954379081726, 0.19555751979351044, 0.21888180077075958, 0.14718371629714966, 0.05818191170692444, 0.1755087524652481, 0.15988582372665405]
+  history budgets: [1092, 1442, 1413, 1480, 1275, 1021, 1356, 1311]
+  layer history total: 10390
+  prefill lengths: [1124, 1474, 1445, 1512, 1307, 1053, 1388, 1343]
+  layer prefill total: 10646
+[EntroKV-global] layer=23, q_len=5265
+  KV entropy:      [0.15419840812683105, 0.13618767261505127, 0.1256491094827652, 0.1558714509010315, 0.05975215137004852, 0.12496110796928406, 0.1381342113018036, 0.06527754664421082]
+  history budgets: [1295, 1244, 1214, 1300, 1026, 1212, 1249, 1042]
+  layer history total: 9582
+  prefill lengths: [1327, 1276, 1246, 1332, 1058, 1244, 1281, 1074]
+  layer prefill total: 9838
+[EntroKV-global] layer=24, q_len=5265
+  KV entropy:      [0.16176974773406982, 0.11255167424678802, 0.02281668782234192, 0.18400773406028748, 0.1194397360086441, 0.10264568775892258, 0.19849362969398499, 0.07875216007232666]
+  history budgets: [1317, 1176, 920, 1380, 1196, 1148, 1421, 1080]
+  layer history total: 9638
+  prefill lengths: [1349, 1208, 952, 1412, 1228, 1180, 1453, 1112]
+  layer prefill total: 9894
+[EntroKV-global] layer=25, q_len=5265
+  KV entropy:      [0.1959039717912674, 0.10960598289966583, 0.10445812344551086, 0.10845763981342316, 0.18775606155395508, 0.0324542336165905, 0.0468561016023159, 0.06264574825763702]
+  history budgets: [1414, 1168, 1153, 1165, 1391, 948, 989, 1034]
+  layer history total: 9262
+  prefill lengths: [1446, 1200, 1185, 1197, 1423, 980, 1021, 1066]
+  layer prefill total: 9518
+[EntroKV-global] layer=26, q_len=5265
+  KV entropy:      [0.26934218406677246, 0.24384506046772003, 0.1978650689125061, 0.1848309338092804, 0.1891479343175888, 0.24797892570495605, 0.11364933848381042, 0.1965145468711853]
+  history budgets: [1623, 1551, 1420, 1382, 1395, 1562, 1179, 1416]
+  layer history total: 11528
+  prefill lengths: [1655, 1583, 1452, 1414, 1427, 1594, 1211, 1448]
+  layer prefill total: 11784
+[EntroKV-global] layer=27, q_len=5265
+  KV entropy:      [0.06405038386583328, 0.2030969262123108, 0.15328410267829895, 0.23409268260002136, 0.15841077268123627, 0.27336442470550537, 0.0497753731906414, 0.20340055227279663]
+  history budgets: [1038, 1435, 1292, 1523, 1307, 1635, 997, 1435]
+  layer history total: 10662
+  prefill lengths: [1070, 1467, 1324, 1555, 1339, 1667, 1029, 1467]
+  layer prefill total: 10918
+[EntroKV-global] layer=28, q_len=5265
+  KV entropy:      [0.29934611916542053, 0.03207961469888687, 0.30003178119659424, 0.23439806699752808, 0.2889941930770874, 0.3981807827949524, 0.09920115768909454, 0.332488089799881]
+  history budgets: [1709, 947, 1711, 1524, 1679, 1991, 1138, 1803]
+  layer history total: 12502
+  prefill lengths: [1741, 979, 1743, 1556, 1711, 2023, 1170, 1835]
+  layer prefill total: 12758
+[EntroKV-global] layer=29, q_len=5265
+  KV entropy:      [0.08392190933227539, 0.07164561748504639, 0.4661639332771301, 0.05727754533290863, 0.20654284954071045, 0.33725225925445557, 0.049567803740501404, 0.38213256001472473]
+  history budgets: [1095, 1060, 2185, 1019, 1444, 1817, 997, 1945]
+  layer history total: 11562
+  prefill lengths: [1127, 1092, 2217, 1051, 1476, 1849, 1029, 1977]
+  layer prefill total: 11818
+[EntroKV-global] layer=30, q_len=5265
+  KV entropy:      [0.39020806550979614, 0.2150188386440277, 0.26153022050857544, 0.3062361776828766, 0.3957881033420563, 0.2013794183731079, 0.4632282853126526, 0.19318698346614838]
+  history budgets: [1968, 1469, 1601, 1729, 1984, 1430, 2176, 1406]
+  layer history total: 13763
+  prefill lengths: [2000, 1501, 1633, 1761, 2016, 1462, 2208, 1438]
+  layer prefill total: 14019
+[EntroKV-global] layer=31, q_len=5265
+  KV entropy:      [0.12135212123394012, 0.2527201175689697, 0.057700157165527344, 0.22160059213638306, 0.10378297418355942, 0.185232013463974, 0.15938159823417664, 0.2247471809387207]
+  history budgets: [1201, 1576, 1020, 1487, 1151, 1384, 1310, 1496]
+  layer history total: 10625
+  prefill lengths: [1233, 1608, 1052, 1519, 1183, 1416, 1342, 1528]
+  layer prefill total: 10881
+
+[EntroKV-global] allocation finalized
+  budget matrix shape: (32, 8)
+  target final capacity/head: 1579
+  target history capacity/head: 1547
+  global history total: 396032 / 396032
+  global prefill total: 404224 / 404224
+  layer history min/max: 8380 / 24326
+
+Response: 'ORANGE-739. \n\n'
+Elapsed: 1.902 s
+Peak allocated: 16.200 GB
+Peak reserved:  16.498 GB
+
+============================================================================
+EntroKV Stage 4A validation summary
+============================================================================
+Input length:                 5265
+Requested retention ratio:    0.3
+Target final capacity/head:   1579
+Effective retention ratio:    0.299905
+Target history capacity/head: 1547
+Budget matrix shape:          (32, 8)
+Global history total:         396032
+Expected history total:       396032
+Global prefill total:         404224
+Global final total:           405504
+Layer history min/max:        8380 / 24326
+
+Layer 00
+  entropy: [0.740397, 0.831735, 0.847868, 0.874361, 0.756774, 0.888954, 0.796335, 0.394656]
+  history budgets: [2967, 3227, 3273, 3349, 3013, 3390, 3126, 1981]
+  layer history total: 24326
+
+Layer 01
+  entropy: [0.08649, 0.020238, 0.188253, 0.081282, 0.025155, 0.209078, 0.072145, 0.135424]
+  history budgets: [1102, 913, 1392, 1087, 927, 1452, 1061, 1242]
+  layer history total: 9176
+
+Layer 16
+  entropy: [0.399819, 0.277365, 0.174746, 0.226987, 0.419131, 0.150624, 0.324285, 0.276164]
+  history budgets: [1995, 1646, 1354, 1503, 2051, 1285, 1780, 1643]
+  layer history total: 13257
+
+Layer 31
+  entropy: [0.121352, 0.25272, 0.0577, 0.221601, 0.103783, 0.185232, 0.159382, 0.224747]
+  history budgets: [1201, 1576, 1020, 1487, 1151, 1384, 1310, 1496]
+  layer history total: 10625
+
+[PASS] Ratio-based capacity is correct.
+[PASS] Global entropy matrix is [32,8].
+[PASS] Budgets are normalized across all layer-head pairs.
+[PASS] Global integer history budget is exactly conserved.
+[PASS] Layer totals can vary under alpha>0.
+[PASS] Flattened cache and varlen decode remain consistent.
+[PASS] EntroKV Stage 4A is fully validated.

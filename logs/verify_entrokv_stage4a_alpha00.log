@@ -1,0 +1,88 @@
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/monkeypatch.py:30: UserWarning: Transformers version 4.44.2 might not be compatible with SnapKV. SnapKV is tested with Transformers version ['4.37'].
+  warnings.warn(f"Transformers version {transformers_version} might not be compatible with SnapKV. SnapKV is tested with Transformers version {version_list}.")
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:04,  1.44s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.30s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:03<00:01,  1.23s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.15it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.03s/it]
+We detected that you are passing `past_key_values` as a tuple and this is deprecated and will be removed in v4.43. Please use an appropriate `Cache` class (https://huggingface.co/docs/transformers/v4.41.3/en/internal/generation_utils#transformers.Cache)
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/snapkv_utils.py:781: UserWarning: GQA currently supports only for mistral-7B-v0.2 model
+  warnings.warn(
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/snapkv_utils.py:781: UserWarning: GQA currently supports only for mistral-7B-v0.2 model
+  warnings.warn(
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.0, h_bar=0.3
+
+Response: 'ORANGE-739. alpha'
+Elapsed: 1.866 s
+Peak allocated: 16.200 GB
+Peak reserved:  16.488 GB
+
+============================================================================
+EntroKV Stage 4A validation summary
+============================================================================
+Input length:                 5265
+Requested retention ratio:    0.3
+Target final capacity/head:   1579
+Effective retention ratio:    0.299905
+Target history capacity/head: 1547
+Budget matrix shape:          (32, 8)
+Global history total:         396032
+Expected history total:       396032
+Global prefill total:         404224
+Global final total:           405504
+Layer history min/max:        12376 / 12376
+
+Layer 00
+  entropy: [0.740397, 0.831735, 0.847868, 0.874361, 0.756774, 0.888954, 0.796335, 0.394656]
+  history budgets: [1547, 1547, 1547, 1547, 1547, 1547, 1547, 1547]
+  layer history total: 12376
+
+Layer 01
+  entropy: [0.08649, 0.020238, 0.188253, 0.081282, 0.025155, 0.209078, 0.072145, 0.135424]
+  history budgets: [1547, 1547, 1547, 1547, 1547, 1547, 1547, 1547]
+  layer history total: 12376
+
+Layer 16
+  entropy: [0.399819, 0.277365, 0.174746, 0.226987, 0.419131, 0.150624, 0.324285, 0.276164]
+  history budgets: [1547, 1547, 1547, 1547, 1547, 1547, 1547, 1547]
+  layer history total: 12376
+
+Layer 31
+  entropy: [0.121352, 0.25272, 0.0577, 0.221601, 0.103783, 0.185232, 0.159382, 0.224747]
+  history budgets: [1547, 1547, 1547, 1547, 1547, 1547, 1547, 1547]
+  layer history total: 12376
+
+[PASS] Ratio-based capacity is correct.
+[PASS] Global entropy matrix is [32,8].
+[PASS] Budgets are normalized across all layer-head pairs.
+[PASS] Global integer history budget is exactly conserved.
+[PASS] Layer totals can vary under alpha>0.
+[PASS] Flattened cache and varlen decode remain consistent.
+[PASS] EntroKV Stage 4A is fully validated.

@@ -1,0 +1,15 @@
+q_len: 5265
+target ratio: 0.3
+final capacity/head: 1579
+history capacity/head: 1547
+effective ratio: 0.2999050332383666
+
+dynamic budget shape: (32, 8)
+dynamic budget total: 396032
+layer history totals: [4853, 5339, 5824, 6309, 6795, 7280, 7765, 8251, 8736, 9221, 9707, 10192, 10677, 11163, 11648, 12133, 12619, 13104, 13589, 14075, 14560, 15045, 15531, 16016, 16501, 16987, 17472, 17957, 18443, 18928, 19413, 19899]
+
+[PASS] Ratio capacity is correct.
+[PASS] Global budget shape is [32,8].
+[PASS] Dynamic global budget is non-uniform.
+[PASS] Global integer budget is exactly conserved.
+[PASS] alpha=0 globally degenerates to fixed budget.

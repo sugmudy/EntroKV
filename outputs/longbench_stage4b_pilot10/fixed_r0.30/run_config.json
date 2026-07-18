@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "run_name": "fixed_r0.30",
+  "method": "fixed",
+  "model_path": "/root/autodl-tmp/models/Meta-Llama-3.1-8B-Instruct",
+  "dataset_source": "zai-org/LongBench",
+  "tasks": [
+    "qasper",
+    "hotpotqa",
+    "passage_retrieval_en"
+  ],
+  "sample_start": 0,
+  "sample_limit": 1,
+  "max_input_tokens": 8192,
+  "retention_ratio": 0.3,
+  "window_size": 32,
+  "kernel_size": 7,
+  "pooling": "maxpool",
+  "alpha": 0.5,
+  "h_bar": 0.3,
+  "seed": 42,
+  "longbench_e": false,
+  "git_commit": "50b3d47459479792c6c250961e6073bde583c081",
+  "torch_version": "2.8.0+cu128",
+  "transformers_version": "4.44.2",
+  "cuda_version": "12.8",
+  "gpu": "NVIDIA GeForce RTX 4090"
+}

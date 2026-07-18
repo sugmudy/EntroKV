@@ -1,0 +1,304 @@
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/monkeypatch.py:30: UserWarning: Transformers version 4.44.2 might not be compatible with SnapKV. SnapKV is tested with Transformers version ['4.37'].
+  warnings.warn(f"Transformers version {transformers_version} might not be compatible with SnapKV. SnapKV is tested with Transformers version {version_list}.")
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:04,  1.44s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.30s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:03<00:01,  1.24s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.14it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.04s/it]
+We detected that you are passing `past_key_values` as a tuple and this is deprecated and will be removed in v4.43. Please use an appropriate `Cache` class (https://huggingface.co/docs/transformers/v4.41.3/en/internal/generation_utils#transformers.Cache)
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/snapkv_utils.py:725: UserWarning: GQA currently supports only for mistral-7B-v0.2 model
+  warnings.warn(
+Model path:   /root/autodl-tmp/models/Meta-Llama-3.1-8B-Instruct
+Input length: 5265
+Capacity:     256
+Window:       32
+Alpha:        0.5
+H_bar:        0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=00, q_len=5265, history=5233
+  KV entropy:      [0.7403972148895264, 0.8317352533340454, 0.8478676080703735, 0.8743607401847839, 0.7567741870880127, 0.8889542818069458, 0.7963345646858215, 0.394655704498291]
+  history budgets: [218, 238, 241, 247, 222, 250, 230, 146]
+  history total:   1792 / 1792
+  prefill lengths: [250, 270, 273, 279, 254, 282, 262, 178]
+  prefill total:   2048 / 2048
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/snapkv_utils.py:725: UserWarning: GQA currently supports only for mistral-7B-v0.2 model
+  warnings.warn(
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=01, q_len=5265, history=5233
+  KV entropy:      [0.08648976683616638, 0.020238088443875313, 0.1882525086402893, 0.08128207921981812, 0.025154778733849525, 0.20907814800739288, 0.07214516401290894, 0.13542363047599792]
+  history budgets: [215, 178, 272, 212, 181, 284, 207, 243]
+  history total:   1792 / 1792
+  prefill lengths: [247, 210, 304, 244, 213, 316, 239, 275]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=02, q_len=5265, history=5233
+  KV entropy:      [0.04527214542031288, 0.1278432160615921, 0.021464722231030464, 0.1616605818271637, 0.08407412469387054, 0.20248711109161377, 0.048710666596889496, 0.02079588919878006]
+  history budgets: [199, 246, 185, 266, 221, 289, 201, 185]
+  history total:   1792 / 1792
+  prefill lengths: [231, 278, 217, 298, 253, 321, 233, 217]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=03, q_len=5265, history=5233
+  KV entropy:      [0.0881933644413948, 0.014169305562973022, 0.02931319922208786, 0.0959649384021759, 0.0285874605178833, 0.11291886121034622, 0.11270266771316528, 0.05694142356514931]
+  history budgets: [237, 191, 201, 241, 200, 252, 252, 218]
+  history total:   1792 / 1792
+  prefill lengths: [269, 223, 233, 273, 232, 284, 284, 250]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=04, q_len=5265, history=5233
+  KV entropy:      [0.09414231777191162, 0.10305802524089813, 0.1483672559261322, 0.10131821036338806, 0.1687019020318985, 0.12451933324337006, 0.08372880518436432, 0.1342160701751709]
+  history budgets: [210, 215, 239, 214, 250, 227, 205, 232]
+  history total:   1792 / 1792
+  prefill lengths: [242, 247, 271, 246, 282, 259, 237, 264]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=05, q_len=5265, history=5233
+  KV entropy:      [0.11709429323673248, 0.30481505393981934, 0.21633370220661163, 0.08697360754013062, 0.2835283875465393, 0.18438264727592468, 0.176681786775589, 0.09544830769300461]
+  history budgets: [193, 280, 239, 180, 271, 225, 221, 183]
+  history total:   1792 / 1792
+  prefill lengths: [225, 312, 271, 212, 303, 257, 253, 215]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=06, q_len=5265, history=5233
+  KV entropy:      [0.20910777151584625, 0.20835918188095093, 0.14400193095207214, 0.20449736714363098, 0.1681576669216156, 0.3546815514564514, 0.3061061203479767, 0.18552790582180023]
+  history budgets: [218, 218, 190, 216, 201, 281, 260, 208]
+  history total:   1792 / 1792
+  prefill lengths: [250, 250, 222, 248, 233, 313, 292, 240]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=07, q_len=5265, history=5233
+  KV entropy:      [0.1930701732635498, 0.3453117609024048, 0.32594871520996094, 0.23203334212303162, 0.27349814772605896, 0.3794959783554077, 0.3052906394004822, 0.23572301864624023]
+  history budgets: [188, 247, 239, 203, 219, 260, 231, 205]
+  history total:   1792 / 1792
+  prefill lengths: [220, 279, 271, 235, 251, 292, 263, 237]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=08, q_len=5265, history=5233
+  KV entropy:      [0.29702460765838623, 0.17736214399337769, 0.44688880443573, 0.23748928308486938, 0.3464292287826538, 0.19098466634750366, 0.23429153859615326, 0.36149919033050537]
+  history budgets: [228, 182, 285, 205, 247, 188, 204, 253]
+  history total:   1792 / 1792
+  prefill lengths: [260, 214, 317, 237, 279, 220, 236, 285]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=09, q_len=5265, history=5233
+  KV entropy:      [0.5072886943817139, 0.20277139544487, 0.20741435885429382, 0.4697730839252472, 0.40975522994995117, 0.3451061248779297, 0.2549125552177429, 0.4191109538078308]
+  history budgets: [277, 173, 174, 264, 244, 222, 191, 247]
+  history total:   1792 / 1792
+  prefill lengths: [309, 205, 206, 296, 276, 254, 223, 279]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=10, q_len=5265, history=5233
+  KV entropy:      [0.3286215662956238, 0.2229725867509842, 0.2724434733390808, 0.272265762090683, 0.3917180299758911, 0.34545865654945374, 0.4025137424468994, 0.32069987058639526]
+  history budgets: [227, 189, 207, 207, 250, 233, 254, 225]
+  history total:   1792 / 1792
+  prefill lengths: [259, 221, 239, 239, 282, 265, 286, 257]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=11, q_len=5265, history=5233
+  KV entropy:      [0.4308098554611206, 0.39872318506240845, 0.4396229386329651, 0.4432156980037689, 0.3036597669124603, 0.4840002655982971, 0.49582523107528687, 0.2259104698896408]
+  history budgets: [233, 223, 236, 237, 192, 250, 254, 167]
+  history total:   1792 / 1792
+  prefill lengths: [265, 255, 268, 269, 224, 282, 286, 199]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=12, q_len=5265, history=5233
+  KV entropy:      [0.3611723482608795, 0.453300803899765, 0.4552720785140991, 0.30304861068725586, 0.1424543857574463, 0.36662840843200684, 0.3474384546279907, 0.3310837745666504]
+  history budgets: [230, 262, 262, 209, 154, 231, 225, 219]
+  history total:   1792 / 1792
+  prefill lengths: [262, 294, 294, 241, 186, 263, 257, 251]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=13, q_len=5265, history=5233
+  KV entropy:      [0.4944131672382355, 0.3627268970012665, 0.4339957535266876, 0.4164505898952484, 0.5193421244621277, 0.30045032501220703, 0.34665730595588684, 0.45244547724723816]
+  history budgets: [249, 207, 230, 224, 256, 188, 202, 236]
+  history total:   1792 / 1792
+  prefill lengths: [281, 239, 262, 256, 288, 220, 234, 268]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=14, q_len=5265, history=5233
+  KV entropy:      [0.3419647812843323, 0.43620800971984863, 0.1879512369632721, 0.4054037928581238, 0.3372318744659424, 0.43888169527053833, 0.2985493540763855, 0.42600464820861816]
+  history budgets: [218, 250, 166, 240, 217, 251, 203, 247]
+  history total:   1792 / 1792
+  prefill lengths: [250, 282, 198, 272, 249, 283, 235, 279]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=15, q_len=5265, history=5233
+  KV entropy:      [0.19344282150268555, 0.3746323585510254, 0.4571228623390198, 0.21301661431789398, 0.3579804301261902, 0.35240834951400757, 0.3958318829536438, 0.2598111033439636]
+  history budgets: [177, 241, 271, 184, 236, 234, 249, 200]
+  history total:   1792 / 1792
+  prefill lengths: [209, 273, 303, 216, 268, 266, 281, 232]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=16, q_len=5265, history=5233
+  KV entropy:      [0.3998194932937622, 0.2773648798465729, 0.17474567890167236, 0.22698749601840973, 0.41913077235221863, 0.15062405169010162, 0.32428479194641113, 0.2761639654636383]
+  history budgets: [270, 222, 183, 203, 277, 174, 241, 222]
+  history total:   1792 / 1792
+  prefill lengths: [302, 254, 215, 235, 309, 206, 273, 254]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=17, q_len=5265, history=5233
+  KV entropy:      [0.22121906280517578, 0.29714953899383545, 0.3811410665512085, 0.3839663863182068, 0.15715008974075317, 0.27936118841171265, 0.38005271553993225, 0.237177774310112]
+  history budgets: [197, 226, 258, 259, 173, 219, 257, 203]
+  history total:   1792 / 1792
+  prefill lengths: [229, 258, 290, 291, 205, 251, 289, 235]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=18, q_len=5265, history=5233
+  KV entropy:      [0.16199393570423126, 0.10064905136823654, 0.2367955446243286, 0.13950052857398987, 0.11012691259384155, 0.2905527949333191, 0.14676646888256073, 0.24484829604625702]
+  history budgets: [216, 187, 251, 206, 192, 276, 209, 255]
+  history total:   1792 / 1792
+  prefill lengths: [248, 219, 283, 238, 224, 308, 241, 287]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=19, q_len=5265, history=5233
+  KV entropy:      [0.30310606956481934, 0.15142498910427094, 0.23676936328411102, 0.3645479381084442, 0.0976308137178421, 0.21786347031593323, 0.1015772819519043, 0.13277199864387512]
+  history budgets: [270, 202, 240, 297, 178, 232, 180, 193]
+  history total:   1792 / 1792
+  prefill lengths: [302, 234, 272, 329, 210, 264, 212, 225]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=20, q_len=5265, history=5233
+  KV entropy:      [0.26356276869773865, 0.14838197827339172, 0.2373327761888504, 0.35064518451690674, 0.11947789043188095, 0.13073696196079254, 0.3000428378582001, 0.1104249507188797]
+  history budgets: [249, 198, 237, 287, 185, 190, 265, 181]
+  history total:   1792 / 1792
+  prefill lengths: [281, 230, 269, 319, 217, 222, 297, 213]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=21, q_len=5265, history=5233
+  KV entropy:      [0.2936769425868988, 0.086734339594841, 0.20250573754310608, 0.18505126237869263, 0.0969899445772171, 0.16225631535053253, 0.1767333596944809, 0.05200958251953125]
+  history budgets: [291, 189, 246, 238, 195, 227, 234, 172]
+  history total:   1792 / 1792
+  prefill lengths: [323, 221, 278, 270, 227, 259, 266, 204]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=22, q_len=5265, history=5233
+  KV entropy:      [0.08299767225980759, 0.20561954379081726, 0.19555751979351044, 0.21888180077075958, 0.14718371629714966, 0.05818191170692444, 0.1755087524652481, 0.15988582372665405]
+  history budgets: [188, 249, 244, 255, 220, 176, 234, 226]
+  history total:   1792 / 1792
+  prefill lengths: [220, 281, 276, 287, 252, 208, 266, 258]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=23, q_len=5265, history=5233
+  KV entropy:      [0.15419840812683105, 0.13618767261505127, 0.1256491094827652, 0.1558714509010315, 0.05975215137004852, 0.12496110796928406, 0.1381342113018036, 0.06527754664421082]
+  history budgets: [242, 232, 227, 243, 192, 227, 234, 195]
+  history total:   1792 / 1792
+  prefill lengths: [274, 264, 259, 275, 224, 259, 266, 227]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=24, q_len=5265, history=5233
+  KV entropy:      [0.16176974773406982, 0.11255167424678802, 0.02281668782234192, 0.18400773406028748, 0.1194397360086441, 0.10264568775892258, 0.19849362969398499, 0.07875216007232666]
+  history budgets: [245, 219, 171, 257, 222, 213, 264, 201]
+  history total:   1792 / 1792
+  prefill lengths: [277, 251, 203, 289, 254, 245, 296, 233]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=25, q_len=5265, history=5233
+  KV entropy:      [0.1959039717912674, 0.10960598289966583, 0.10445812344551086, 0.10845763981342316, 0.18775606155395508, 0.0324542336165905, 0.0468561016023159, 0.06264574825763702]
+  history budgets: [274, 226, 223, 225, 269, 184, 191, 200]
+  history total:   1792 / 1792
+  prefill lengths: [306, 258, 255, 257, 301, 216, 223, 232]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=26, q_len=5265, history=5233
+  KV entropy:      [0.26934218406677246, 0.24384506046772003, 0.1978650689125061, 0.1848309338092804, 0.1891479343175888, 0.24797892570495605, 0.11364933848381042, 0.1965145468711853]
+  history budgets: [252, 241, 221, 215, 217, 243, 183, 220]
+  history total:   1792 / 1792
+  prefill lengths: [284, 273, 253, 247, 249, 275, 215, 252]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=27, q_len=5265, history=5233
+  KV entropy:      [0.06405038386583328, 0.2030969262123108, 0.15328410267829895, 0.23409268260002136, 0.15841077268123627, 0.27336442470550537, 0.0497753731906414, 0.20340055227279663]
+  history budgets: [174, 241, 217, 256, 220, 275, 168, 241]
+  history total:   1792 / 1792
+  prefill lengths: [206, 273, 249, 288, 252, 307, 200, 273]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=28, q_len=5265, history=5233
+  KV entropy:      [0.29934611916542053, 0.03207961469888687, 0.30003178119659424, 0.23439806699752808, 0.2889941930770874, 0.3981807827949524, 0.09920115768909454, 0.332488089799881]
+  history budgets: [245, 136, 245, 218, 241, 285, 163, 259]
+  history total:   1792 / 1792
+  prefill lengths: [277, 168, 277, 250, 273, 317, 195, 291]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=29, q_len=5265, history=5233
+  KV entropy:      [0.08392190933227539, 0.07164561748504639, 0.4661639332771301, 0.05727754533290863, 0.20654284954071045, 0.33725225925445557, 0.049567803740501404, 0.38213256001472473]
+  history budgets: [170, 164, 339, 158, 224, 282, 154, 301]
+  history total:   1792 / 1792
+  prefill lengths: [202, 196, 371, 190, 256, 314, 186, 333]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=30, q_len=5265, history=5233
+  KV entropy:      [0.39020806550979614, 0.2150188386440277, 0.26153022050857544, 0.3062361776828766, 0.3957881033420563, 0.2013794183731079, 0.4632282853126526, 0.19318698346614838]
+  history budgets: [256, 191, 209, 225, 258, 186, 284, 183]
+  history total:   1792 / 1792
+  prefill lengths: [288, 223, 241, 257, 290, 218, 316, 215]
+  prefill total:   2048 / 2048
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+[EntroKV] layer=31, q_len=5265, history=5233
+  KV entropy:      [0.12135212123394012, 0.2527201175689697, 0.057700157165527344, 0.22160059213638306, 0.10378297418355942, 0.185232013463974, 0.15938159823417664, 0.2247471809387207]
+  history budgets: [203, 266, 172, 251, 194, 233, 221, 252]
+  history total:   1792 / 1792
+  prefill lengths: [235, 298, 204, 283, 226, 265, 253, 284]
+  prefill total:   2048 / 2048
+
+Response: 'ORANGE-739. alpha'
+Elapsed: 1.889 s
+Peak allocated: 15.585 GB
+Peak reserved:  16.004 GB
+[PASS] Secret retrieval answer is correct.
+
+============================================================================
+EntroKV Stage 3B validation summary
+============================================================================
+Layer 00
+  KV entropy:       [0.740397, 0.831735, 0.847868, 0.874361, 0.756774, 0.888954, 0.796335, 0.394656]
+  history budgets:  [218, 238, 241, 247, 222, 250, 230, 146]
+  history total:    1792
+  prefill lengths:  [250, 270, 273, 279, 254, 282, 262, 178]
+  prefill total:    2048
+  decode count:     5
+  current total:    2088
+  flattened rows:   2088
+  cu_klen[-1]:      2088
+  klen_sum:         2088
+Layer 01
+  KV entropy:       [0.08649, 0.020238, 0.188253, 0.081282, 0.025155, 0.209078, 0.072145, 0.135424]
+  history budgets:  [215, 178, 272, 212, 181, 284, 207, 243]
+  history total:    1792
+  prefill lengths:  [247, 210, 304, 244, 213, 316, 239, 275]
+  prefill total:    2048
+  decode count:     5
+  current total:    2088
+  flattened rows:   2088
+  cu_klen[-1]:      2088
+  klen_sum:         2088
+Layer 16
+  KV entropy:       [0.399819, 0.277365, 0.174746, 0.226987, 0.419131, 0.150624, 0.324285, 0.276164]
+  history budgets:  [270, 222, 183, 203, 277, 174, 241, 222]
+  history total:    1792
+  prefill lengths:  [302, 254, 215, 235, 309, 206, 273, 254]
+  prefill total:    2048
+  decode count:     5
+  current total:    2088
+  flattened rows:   2088
+  cu_klen[-1]:      2088
+  klen_sum:         2088
+Layer 31
+  KV entropy:       [0.121352, 0.25272, 0.0577, 0.221601, 0.103783, 0.185232, 0.159382, 0.224747]
+  history budgets:  [203, 266, 172, 251, 194, 233, 221, 252]
+  history total:    1792
+  prefill lengths:  [235, 298, 204, 283, 226, 265, 253, 284]
+  prefill total:    2048
+  decode count:     5
+  current total:    2088
+  flattened rows:   2088
+  cu_klen[-1]:      2088
+  klen_sum:         2088
+
+Validated layers: 32
+Non-uniform layers: 32/32
+Expected history total/layer: 1792
+Expected prefill total/layer: 2048
+Expected final total/layer: 2088
+[PASS] Real attention entropy was computed for all query heads.
+[PASS] 32 query-head entropies were mapped to 8 physical KV heads.
+[PASS] EntroKV raw and integer budgets are correct.
+[PASS] Per-layer total KV budget is exactly conserved.
+[PASS] SnapKV top-k, flattened cache and varlen decode are consistent.
+[PASS] EntroKV Stage 3B integration is fully validated.

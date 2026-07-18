@@ -1,0 +1,81 @@
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/monkeypatch.py:30: UserWarning: Transformers version 4.44.2 might not be compatible with SnapKV. SnapKV is tested with Transformers version ['4.37'].
+  warnings.warn(f"Transformers version {transformers_version} might not be compatible with SnapKV. SnapKV is tested with Transformers version {version_list}.")
+Mode: fixed
+Model path: /root/autodl-tmp/models/Meta-Llama-3.1-8B-Instruct
+Capacity: 256
+Window size: 32
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:04,  1.50s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.41s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:04<00:01,  1.35s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.06it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.11s/it]
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/snapkv_utils.py:645: UserWarning: GQA currently supports only for mistral-7B-v0.2 model
+  warnings.warn("GQA currently supports only for mistral-7B-v0.2 model")
+Input length: 5265 tokens
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/snapkv_utils.py:645: UserWarning: GQA currently supports only for mistral-7B-v0.2 model
+  warnings.warn("GQA currently supports only for mistral-7B-v0.2 model")
+
+[Fixed / Layer 0] GQA mapping
+  KV head 0: query heads 0-3, synthetic mean=1.5
+  KV head 1: query heads 4-7, synthetic mean=5.5
+  KV head 2: query heads 8-11, synthetic mean=9.5
+  KV head 3: query heads 12-15, synthetic mean=13.5
+  KV head 4: query heads 16-19, synthetic mean=17.5
+  KV head 5: query heads 20-23, synthetic mean=21.5
+  KV head 6: query heads 24-27, synthetic mean=25.5
+  KV head 7: query heads 28-31, synthetic mean=29.5
+
+[Fixed / Layer 0] Intermediate shapes
+  query_states:          (1, 32, 5265, 128)
+  original_key_states:   (1, 8, 5265, 128)
+  raw_attention:         (1, 32, 32, 5265)
+  query_head_scores:     (1, 32, 5233)
+  grouped_scores:        (1, 8, 4, 5233)
+  KV_head_scores:        (1, 8, 5233)
+  historical quota/head: 224
+  recent window/head:    32
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+Compress config(Snap): window_size=32, max_capacity_prompt=256, kernel_size=7, pooling=maxpool, pyram_mode=False, beta=20
+
+Response: 'ORANGE-739. alpha'
+Elapsed: 1.865 s
+Peak allocated: 15.584 GB
+Peak reserved:  15.859 GB
+
+========================================================================
+Fixed SnapKV validation summary
+========================================================================
+Layer 00: Q-heads=32, KV-heads=8, groups=4, input=5265, retained=256, shape=(1, 8, 256, 128)
+Layer 01: Q-heads=32, KV-heads=8, groups=4, input=5265, retained=256, shape=(1, 8, 256, 128)
+Layer 16: Q-heads=32, KV-heads=8, groups=4, input=5265, retained=256, shape=(1, 8, 256, 128)
+Layer 31: Q-heads=32, KV-heads=8, groups=4, input=5265, retained=256, shape=(1, 8, 256, 128)
+
+Validated layers: 32
+Uniform retained length: 256
+[PASS] Fixed SnapKV GQA mapping and cache length are correct.

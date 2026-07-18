@@ -1,0 +1,71 @@
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/monkeypatch.py:30: UserWarning: Transformers version 4.44.2 might not be compatible with SnapKV. SnapKV is tested with Transformers version ['4.37'].
+  warnings.warn(f"Transformers version {transformers_version} might not be compatible with SnapKV. SnapKV is tested with Transformers version {version_list}.")
+Mode: adaptive
+Model path: /root/autodl-tmp/models/Meta-Llama-3.1-8B-Instruct
+Capacity: 256
+Window size: 32
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:04,  1.50s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.33s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:03<00:01,  1.25s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.14it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.04s/it]
+We detected that you are passing `past_key_values` as a tuple and this is deprecated and will be removed in v4.43. Please use an appropriate `Cache` class (https://huggingface.co/docs/transformers/v4.41.3/en/internal/generation_utils#transformers.Cache)
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/snapkv_utils.py:725: UserWarning: GQA currently supports only for mistral-7B-v0.2 model
+  warnings.warn(
+Input length: 5265 tokens
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/snapkv_utils.py:725: UserWarning: GQA currently supports only for mistral-7B-v0.2 model
+  warnings.warn(
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+Compress config(adakv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=None, h_bar=None
+
+Response: 'ORANGE-739. alpha'
+Elapsed: 1.931 s
+Peak allocated: 15.585 GB
+Peak reserved:  15.982 GB
+
+========================================================================
+Adaptive SnapKV validation summary
+========================================================================
+Layer 00: prefill head_lens=[201, 286, 274, 240, 269, 228, 378, 172]
+          decode_count=5, current head_lens=[206, 291, 279, 245, 274, 233, 383, 177]
+          flattened_rows=2088, cu_klen[-1]=2088, klen_sum=2088
+Layer 01: prefill head_lens=[185, 150, 278, 271, 154, 453, 234, 323]
+          decode_count=5, current head_lens=[190, 155, 283, 276, 159, 458, 239, 328]
+          flattened_rows=2088, cu_klen[-1]=2088, klen_sum=2088
+Layer 16: prefill head_lens=[203, 282, 200, 272, 322, 180, 331, 256]
+          decode_count=5, current head_lens=[208, 287, 205, 277, 327, 185, 336, 261]
+          flattened_rows=2086, cu_klen[-1]=2086, klen_sum=2086
+Layer 31: prefill head_lens=[250, 424, 164, 181, 196, 236, 270, 327]
+          decode_count=5, current head_lens=[255, 429, 169, 186, 201, 241, 275, 332]
+          flattened_rows=2088, cu_klen[-1]=2088, klen_sum=2088
+
+Validated layers: 32
+[PASS] head_lens, flattened rows and cu_klen are internally consistent.
+[PASS] klen_sum is also consistent.
+[PASS] Adaptive flattened GQA path is fully validated.

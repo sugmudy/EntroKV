@@ -1,0 +1,243 @@
+bash: /root/miniconda3/lib/libtinfo.so.6: no version information available (required by bash)
+{
+  "schema_version": 1,
+  "run_name": "full",
+  "method": "full",
+  "model_path": "/root/autodl-tmp/models/Meta-Llama-3.1-8B-Instruct",
+  "dataset_source": "zai-org/LongBench",
+  "tasks": [
+    "qasper",
+    "hotpotqa",
+    "passage_retrieval_en"
+  ],
+  "sample_start": 0,
+  "sample_limit": 10,
+  "max_input_tokens": 8192,
+  "retention_ratio": 0.3,
+  "window_size": 32,
+  "kernel_size": 7,
+  "pooling": "maxpool",
+  "alpha": 0.5,
+  "h_bar": 0.3,
+  "seed": 42,
+  "longbench_e": false,
+  "git_commit": "50b3d47459479792c6c250961e6073bde583c081",
+  "torch_version": "2.8.0+cu128",
+  "transformers_version": "4.44.2",
+  "cuda_version": "12.8",
+  "gpu": "NVIDIA GeForce RTX 4090"
+}
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:04,  1.36s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.27s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:03<00:01,  1.22s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.16it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.01s/it]
+/root/miniconda3/lib/python3.12/site-packages/datasets/load.py:1491: FutureWarning: The repository for zai-org/LongBench contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/zai-org/LongBench
+You can avoid this message in future by passing the argument `trust_remote_code=True`.
+Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
+  warnings.warn(
+
+[full] task=qasper, selected=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], completed=[0]
+full:qasper:   0%|          | 0/10 [00:00<?, ?it/s]full:qasper:  20%|██        | 2/10 [00:02<00:11,  1.43s/it]full:qasper:  30%|███       | 3/10 [00:03<00:08,  1.27s/it]full:qasper:  40%|████      | 4/10 [00:05<00:07,  1.25s/it]full:qasper:  50%|█████     | 5/10 [00:06<00:07,  1.46s/it]full:qasper:  60%|██████    | 6/10 [00:07<00:05,  1.29s/it]full:qasper:  70%|███████   | 7/10 [00:09<00:03,  1.29s/it]full:qasper:  80%|████████  | 8/10 [00:10<00:02,  1.41s/it]full:qasper:  90%|█████████ | 9/10 [00:12<00:01,  1.45s/it]full:qasper: 100%|██████████| 10/10 [00:14<00:00,  1.52s/it]full:qasper: 100%|██████████| 10/10 [00:14<00:00,  1.41s/it]
+/root/miniconda3/lib/python3.12/site-packages/datasets/load.py:1491: FutureWarning: The repository for zai-org/LongBench contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/zai-org/LongBench
+You can avoid this message in future by passing the argument `trust_remote_code=True`.
+Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
+  warnings.warn(
+
+[full] task=hotpotqa, selected=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], completed=[0]
+full:hotpotqa:   0%|          | 0/10 [00:00<?, ?it/s]full:hotpotqa:  20%|██        | 2/10 [00:01<00:06,  1.15it/s]full:hotpotqa:  30%|███       | 3/10 [00:03<00:09,  1.31s/it]full:hotpotqa:  40%|████      | 4/10 [00:05<00:08,  1.36s/it]full:hotpotqa:  50%|█████     | 5/10 [00:06<00:06,  1.38s/it]full:hotpotqa:  60%|██████    | 6/10 [00:07<00:05,  1.40s/it]full:hotpotqa:  70%|███████   | 7/10 [00:09<00:04,  1.42s/it]full:hotpotqa:  80%|████████  | 8/10 [00:09<00:02,  1.15s/it]full:hotpotqa:  90%|█████████ | 9/10 [00:11<00:01,  1.22s/it]full:hotpotqa: 100%|██████████| 10/10 [00:12<00:00,  1.28s/it]full:hotpotqa: 100%|██████████| 10/10 [00:12<00:00,  1.28s/it]
+
+[full] task=passage_retrieval_en, selected=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], completed=[0]
+full:passage_retrieval_en:   0%|          | 0/10 [00:00<?, ?it/s]full:passage_retrieval_en:  20%|██        | 2/10 [00:01<00:06,  1.26it/s]full:passage_retrieval_en:  30%|███       | 3/10 [00:03<00:07,  1.11s/it]full:passage_retrieval_en:  40%|████      | 4/10 [00:04<00:07,  1.26s/it]full:passage_retrieval_en:  50%|█████     | 5/10 [00:06<00:08,  1.60s/it]full:passage_retrieval_en:  60%|██████    | 6/10 [00:08<00:06,  1.55s/it]full:passage_retrieval_en:  70%|███████   | 7/10 [00:09<00:04,  1.51s/it]full:passage_retrieval_en:  80%|████████  | 8/10 [00:11<00:02,  1.49s/it]full:passage_retrieval_en:  90%|█████████ | 9/10 [00:12<00:01,  1.47s/it]full:passage_retrieval_en: 100%|██████████| 10/10 [00:14<00:00,  1.46s/it]full:passage_retrieval_en: 100%|██████████| 10/10 [00:14<00:00,  1.41s/it]
+
+[PASS] Stage 4B runner completed: /root/autodl-tmp/entrokv_repro/AdaKV/outputs/longbench_stage4b/full
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/monkeypatch.py:30: UserWarning: Transformers version 4.44.2 might not be compatible with SnapKV. SnapKV is tested with Transformers version ['4.37'].
+  warnings.warn(f"Transformers version {transformers_version} might not be compatible with SnapKV. SnapKV is tested with Transformers version {version_list}.")
+{
+  "schema_version": 1,
+  "run_name": "fixed_r0.30",
+  "method": "fixed",
+  "model_path": "/root/autodl-tmp/models/Meta-Llama-3.1-8B-Instruct",
+  "dataset_source": "zai-org/LongBench",
+  "tasks": [
+    "qasper",
+    "hotpotqa",
+    "passage_retrieval_en"
+  ],
+  "sample_start": 0,
+  "sample_limit": 10,
+  "max_input_tokens": 8192,
+  "retention_ratio": 0.3,
+  "window_size": 32,
+  "kernel_size": 7,
+  "pooling": "maxpool",
+  "alpha": 0.5,
+  "h_bar": 0.3,
+  "seed": 42,
+  "longbench_e": false,
+  "git_commit": "50b3d47459479792c6c250961e6073bde583c081",
+  "torch_version": "2.8.0+cu128",
+  "transformers_version": "4.44.2",
+  "cuda_version": "12.8",
+  "gpu": "NVIDIA GeForce RTX 4090"
+}
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:03,  1.32s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.26s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:03<00:01,  1.23s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.15it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.01s/it]
+/root/miniconda3/lib/python3.12/site-packages/datasets/load.py:1491: FutureWarning: The repository for zai-org/LongBench contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/zai-org/LongBench
+You can avoid this message in future by passing the argument `trust_remote_code=True`.
+Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
+  warnings.warn(
+
+[fixed_r0.30] task=qasper, selected=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], completed=[0]
+fixed_r0.30:qasper:   0%|          | 0/10 [00:00<?, ?it/s]/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/snapkv_utils.py:673: UserWarning: GQA currently supports only for mistral-7B-v0.2 model
+  warnings.warn(
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/snapkv_utils.py:673: UserWarning: GQA currently supports only for mistral-7B-v0.2 model
+  warnings.warn(
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+Compress config(Snap-ratio): window_size=32, configured_capacity=256, retention_ratio=0.3, kernel_size=7, pooling=maxpool
+fixed_r0.30:qasper:  20%|██        | 2/10 [00:02<00:11,  1.49s/it]fixed_r0.30:qasper:  30%|███       | 3/10 [00:03<00:09,  1.29s/it]fixed_r0.30:qasper:  40%|████      | 4/10 [00:05<00:07,  1.18s/it]fixed_r0.30:qasper:  50%|█████     | 5/10 [00:06<00:06,  1.34s/it]fixed_r0.30:qasper:  60%|██████    | 6/10 [00:07<00:04,  1.19s/it]fixed_r0.30:qasper:  70%|███████   | 7/10 [00:08<00:03,  1.21s/it]fixed_r0.30:qasper:  80%|████████  | 8/10 [00:10<00:02,  1.33s/it]fixed_r0.30:qasper:  90%|█████████ | 9/10 [00:11<00:01,  1.32s/it]fixed_r0.30:qasper: 100%|██████████| 10/10 [00:13<00:00,  1.42s/it]fixed_r0.30:qasper: 100%|██████████| 10/10 [00:13<00:00,  1.33s/it]
+/root/miniconda3/lib/python3.12/site-packages/datasets/load.py:1491: FutureWarning: The repository for zai-org/LongBench contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/zai-org/LongBench
+You can avoid this message in future by passing the argument `trust_remote_code=True`.
+Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
+  warnings.warn(
+
+[fixed_r0.30] task=hotpotqa, selected=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], completed=[0]
+fixed_r0.30:hotpotqa:   0%|          | 0/10 [00:00<?, ?it/s]fixed_r0.30:hotpotqa:  20%|██        | 2/10 [00:01<00:06,  1.28it/s]fixed_r0.30:hotpotqa:  30%|███       | 3/10 [00:03<00:08,  1.22s/it]fixed_r0.30:hotpotqa:  40%|████      | 4/10 [00:04<00:07,  1.31s/it]fixed_r0.30:hotpotqa:  50%|█████     | 5/10 [00:06<00:06,  1.34s/it]fixed_r0.30:hotpotqa:  60%|██████    | 6/10 [00:07<00:05,  1.37s/it]fixed_r0.30:hotpotqa:  70%|███████   | 7/10 [00:09<00:04,  1.37s/it]fixed_r0.30:hotpotqa:  80%|████████  | 8/10 [00:09<00:02,  1.13s/it]fixed_r0.30:hotpotqa:  90%|█████████ | 9/10 [00:10<00:01,  1.20s/it]fixed_r0.30:hotpotqa: 100%|██████████| 10/10 [00:12<00:00,  1.26s/it]fixed_r0.30:hotpotqa: 100%|██████████| 10/10 [00:12<00:00,  1.24s/it]
+
+[fixed_r0.30] task=passage_retrieval_en, selected=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], completed=[0]
+fixed_r0.30:passage_retrieval_en:   0%|          | 0/10 [00:00<?, ?it/s]fixed_r0.30:passage_retrieval_en:  20%|██        | 2/10 [00:01<00:06,  1.28it/s]fixed_r0.30:passage_retrieval_en:  30%|███       | 3/10 [00:03<00:07,  1.07s/it]fixed_r0.30:passage_retrieval_en:  40%|████      | 4/10 [00:04<00:07,  1.21s/it]fixed_r0.30:passage_retrieval_en:  50%|█████     | 5/10 [00:06<00:07,  1.54s/it]fixed_r0.30:passage_retrieval_en:  60%|██████    | 6/10 [00:08<00:05,  1.49s/it]fixed_r0.30:passage_retrieval_en:  70%|███████   | 7/10 [00:09<00:04,  1.45s/it]fixed_r0.30:passage_retrieval_en:  80%|████████  | 8/10 [00:10<00:02,  1.44s/it]fixed_r0.30:passage_retrieval_en:  90%|█████████ | 9/10 [00:12<00:01,  1.41s/it]fixed_r0.30:passage_retrieval_en: 100%|██████████| 10/10 [00:13<00:00,  1.40s/it]fixed_r0.30:passage_retrieval_en: 100%|██████████| 10/10 [00:13<00:00,  1.35s/it]
+
+[PASS] Stage 4B runner completed: /root/autodl-tmp/entrokv_repro/AdaKV/outputs/longbench_stage4b/fixed_r0.30
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/monkeypatch.py:30: UserWarning: Transformers version 4.44.2 might not be compatible with SnapKV. SnapKV is tested with Transformers version ['4.37'].
+  warnings.warn(f"Transformers version {transformers_version} might not be compatible with SnapKV. SnapKV is tested with Transformers version {version_list}.")
+{
+  "schema_version": 1,
+  "run_name": "entrokv_r0.30_a0.50",
+  "method": "entrokv",
+  "model_path": "/root/autodl-tmp/models/Meta-Llama-3.1-8B-Instruct",
+  "dataset_source": "zai-org/LongBench",
+  "tasks": [
+    "qasper",
+    "hotpotqa",
+    "passage_retrieval_en"
+  ],
+  "sample_start": 0,
+  "sample_limit": 10,
+  "max_input_tokens": 8192,
+  "retention_ratio": 0.3,
+  "window_size": 32,
+  "kernel_size": 7,
+  "pooling": "maxpool",
+  "alpha": 0.5,
+  "h_bar": 0.3,
+  "seed": 42,
+  "longbench_e": false,
+  "git_commit": "50b3d47459479792c6c250961e6073bde583c081",
+  "torch_version": "2.8.0+cu128",
+  "transformers_version": "4.44.2",
+  "cuda_version": "12.8",
+  "gpu": "NVIDIA GeForce RTX 4090"
+}
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:04,  1.41s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.29s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:03<00:01,  1.25s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.13it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.04s/it]
+/root/miniconda3/lib/python3.12/site-packages/datasets/load.py:1491: FutureWarning: The repository for zai-org/LongBench contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/zai-org/LongBench
+You can avoid this message in future by passing the argument `trust_remote_code=True`.
+Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
+  warnings.warn(
+
+[entrokv_r0.30_a0.50] task=qasper, selected=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], completed=[0]
+entrokv_r0.30_a0.50:qasper:   0%|          | 0/10 [00:00<?, ?it/s]We detected that you are passing `past_key_values` as a tuple and this is deprecated and will be removed in v4.43. Please use an appropriate `Cache` class (https://huggingface.co/docs/transformers/v4.41.3/en/internal/generation_utils#transformers.Cache)
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/snapkv_utils.py:781: UserWarning: GQA currently supports only for mistral-7B-v0.2 model
+  warnings.warn(
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+/root/autodl-tmp/entrokv_repro/AdaKV/adaptive_snapkv/monkeypatch/snapkv_utils.py:781: UserWarning: GQA currently supports only for mistral-7B-v0.2 model
+  warnings.warn(
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+Compress config(entrokv): window_size=32, base_capacity=224, kernel_size=7, pooling=maxpool, floor_alpha=0.5, pyram_mode=False, alpha=0.5, h_bar=0.3
+entrokv_r0.30_a0.50:qasper:  20%|██        | 2/10 [00:02<00:11,  1.45s/it]entrokv_r0.30_a0.50:qasper:  30%|███       | 3/10 [00:04<00:09,  1.31s/it]entrokv_r0.30_a0.50:qasper:  40%|████      | 4/10 [00:05<00:07,  1.20s/it]entrokv_r0.30_a0.50:qasper:  50%|█████     | 5/10 [00:06<00:06,  1.37s/it]entrokv_r0.30_a0.50:qasper:  60%|██████    | 6/10 [00:07<00:04,  1.24s/it]entrokv_r0.30_a0.50:qasper:  70%|███████   | 7/10 [00:09<00:03,  1.26s/it]entrokv_r0.30_a0.50:qasper:  80%|████████  | 8/10 [00:10<00:02,  1.38s/it]entrokv_r0.30_a0.50:qasper:  90%|█████████ | 9/10 [00:11<00:01,  1.32s/it]entrokv_r0.30_a0.50:qasper: 100%|██████████| 10/10 [00:13<00:00,  1.36s/it]entrokv_r0.30_a0.50:qasper: 100%|██████████| 10/10 [00:13<00:00,  1.33s/it]
+/root/miniconda3/lib/python3.12/site-packages/datasets/load.py:1491: FutureWarning: The repository for zai-org/LongBench contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/zai-org/LongBench
+You can avoid this message in future by passing the argument `trust_remote_code=True`.
+Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
+  warnings.warn(
+
+[entrokv_r0.30_a0.50] task=hotpotqa, selected=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], completed=[0]
+entrokv_r0.30_a0.50:hotpotqa:   0%|          | 0/10 [00:00<?, ?it/s]entrokv_r0.30_a0.50:hotpotqa:  20%|██        | 2/10 [00:01<00:06,  1.22it/s]entrokv_r0.30_a0.50:hotpotqa:  30%|███       | 3/10 [00:03<00:08,  1.24s/it]entrokv_r0.30_a0.50:hotpotqa:  40%|████      | 4/10 [00:04<00:07,  1.33s/it]entrokv_r0.30_a0.50:hotpotqa:  50%|█████     | 5/10 [00:06<00:06,  1.35s/it]entrokv_r0.30_a0.50:hotpotqa:  60%|██████    | 6/10 [00:07<00:05,  1.38s/it]entrokv_r0.30_a0.50:hotpotqa:  70%|███████   | 7/10 [00:09<00:04,  1.41s/it]entrokv_r0.30_a0.50:hotpotqa:  80%|████████  | 8/10 [00:09<00:02,  1.16s/it]entrokv_r0.30_a0.50:hotpotqa:  90%|█████████ | 9/10 [00:11<00:01,  1.23s/it]entrokv_r0.30_a0.50:hotpotqa: 100%|██████████| 10/10 [00:12<00:00,  1.29s/it]entrokv_r0.30_a0.50:hotpotqa: 100%|██████████| 10/10 [00:12<00:00,  1.27s/it]
+
+[entrokv_r0.30_a0.50] task=passage_retrieval_en, selected=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], completed=[0]
+entrokv_r0.30_a0.50:passage_retrieval_en:   0%|          | 0/10 [00:00<?, ?it/s]entrokv_r0.30_a0.50:passage_retrieval_en:  20%|██        | 2/10 [00:01<00:06,  1.27it/s]entrokv_r0.30_a0.50:passage_retrieval_en:  30%|███       | 3/10 [00:03<00:07,  1.09s/it]entrokv_r0.30_a0.50:passage_retrieval_en:  40%|████      | 4/10 [00:04<00:07,  1.24s/it]entrokv_r0.30_a0.50:passage_retrieval_en:  50%|█████     | 5/10 [00:06<00:07,  1.52s/it]entrokv_r0.30_a0.50:passage_retrieval_en:  60%|██████    | 6/10 [00:08<00:05,  1.50s/it]entrokv_r0.30_a0.50:passage_retrieval_en:  70%|███████   | 7/10 [00:09<00:04,  1.47s/it]entrokv_r0.30_a0.50:passage_retrieval_en:  80%|████████  | 8/10 [00:10<00:02,  1.45s/it]entrokv_r0.30_a0.50:passage_retrieval_en:  90%|█████████ | 9/10 [00:12<00:01,  1.44s/it]entrokv_r0.30_a0.50:passage_retrieval_en: 100%|██████████| 10/10 [00:13<00:00,  1.44s/it]entrokv_r0.30_a0.50:passage_retrieval_en: 100%|██████████| 10/10 [00:13<00:00,  1.37s/it]
+
+[PASS] Stage 4B runner completed: /root/autodl-tmp/entrokv_repro/AdaKV/outputs/longbench_stage4b/entrokv_r0.30_a0.50
+/root/miniconda3/lib/python3.12/site-packages/fuzzywuzzy/fuzz.py:11: UserWarning: Using slow pure-python SequenceMatcher. Install python-Levenshtein to remove this warning
+  warnings.warn('Using slow pure-python SequenceMatcher. Install python-Levenshtein to remove this warning')
+
+Stage 4B evaluation summary
+========================================================================================
+full: macro_score=54.9275
+  qasper                   score= 47.4491 n= 10 prefill_ms=808.002 peak_GB=18.842
+  hotpotqa                 score= 57.3333 n= 10 prefill_ms=958.999 peak_GB=21.399
+  passage_retrieval_en     score= 60.0000 n= 10 prefill_ms=1039.285 peak_GB=21.900
+fixed_r0.30: macro_score=54.4414
+  qasper                   score= 45.9908 n= 10 prefill_ms=841.038 peak_GB=15.653
+  hotpotqa                 score= 57.3333 n= 10 prefill_ms=979.082 peak_GB=16.089
+  passage_retrieval_en     score= 60.0000 n= 10 prefill_ms=1055.315 peak_GB=16.176
+entrokv_r0.30_a0.50: macro_score=55.1699
+  qasper                   score= 48.1763 n= 10 prefill_ms=900.702 peak_GB=16.039
+  hotpotqa                 score= 57.3333 n= 10 prefill_ms=1037.768 peak_GB=16.742
+  passage_retrieval_en     score= 60.0000 n= 10 prefill_ms=1114.145 peak_GB=16.880
+
+[PASS] Matched-sample fairness checks passed.
+[PASS] Summary written to /root/autodl-tmp/entrokv_repro/AdaKV/outputs/longbench_stage4b/evaluation/summary.json
+[PASS] CSV written to /root/autodl-tmp/entrokv_repro/AdaKV/outputs/longbench_stage4b/evaluation/summary.csv

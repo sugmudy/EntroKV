@@ -1,0 +1,20 @@
+query entropy shape: (1, 32)
+KV entropy shape:    (1, 8)
+KV entropy:          [0.0, 0.27283975481987, 0.4712153971195221, 0.6354296207427979, 0.7723233699798584, 0.8828780055046082, 0.9635483622550964, 1.0]
+
+alpha=0 raw budgets:
+[224.00003051757812, 224.00003051757812, 224.00003051757812, 224.00003051757812, 224.00003051757812, 224.00003051757812, 224.00003051757812, 224.00003051757812]
+alpha=0 integer budgets:
+[224, 224, 224, 224, 224, 224, 224, 224]
+
+alpha=0.5 raw budgets:
+[72.66598510742188, 138.7532196044922, 186.80377197265625, 226.5797119140625, 259.73809814453125, 286.51666259765625, 306.056640625, 314.88592529296875]
+alpha=0.5 integer budgets:
+[73, 139, 187, 226, 260, 286, 306, 315]
+dynamic total: 1792
+
+[PASS] Entropy shape and range are correct.
+[PASS] GQA entropy aggregation is correct.
+[PASS] alpha=0 degenerates to fixed allocation.
+[PASS] High-entropy KV heads receive larger budgets.
+[PASS] Integer budget total is exactly conserved.
